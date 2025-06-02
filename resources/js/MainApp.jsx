@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Footer from './Components/Footer';
 
 function App() {
     const [events, setEvents] = useState([]);
@@ -122,6 +123,7 @@ function App() {
                     </li>
                 ))}
             </ul>
+            <Footer appName="Eventora.fi"/>
         </div>
     );
 }
