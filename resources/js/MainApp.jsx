@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Footer from './Components/Footer';
+import Header from './Components/Header';
 
 function App() {
     const [events, setEvents] = useState([]);
@@ -70,6 +71,7 @@ function App() {
 
     return (
         <div>
+            <Header/>
             <h1>Event Planner</h1>
 
             <form onSubmit={handleSubmit}>
