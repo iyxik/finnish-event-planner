@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Http;
 
 class EventController extends Controller
 {
@@ -14,13 +15,28 @@ class EventController extends Controller
         $this->jsonFile = base_path('event.json');
     }
 
+    // List all events
     public function index()
     {
         $events = $this->readEvents();
+
+        // Fetch and update
+        $updated = false;
+        foreach ($events as &$event) {
+            if (empty($event['weather']) || empty($event['weather']['coord'])) {
+                $event['weather'] = $this->getWeatherForLocation($event['location']);
+                $updated = true;
+            }
+        }
+
+        if ($updated) {
+            $this->writeEvents($events);
+        }
+
         return response()->json($events);
     }
 
-    // Store new event
+    // Store a new event with weather
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -37,9 +53,9 @@ class EventController extends Controller
 
         $events = $this->readEvents();
 
-        // Create new event with unique id
         $newEvent = $request->all();
         $newEvent['id'] = $this->generateId($events);
+        $newEvent['weather'] = $this->getWeatherForLocation($newEvent['location']);
 
         $events[] = $newEvent;
         $this->writeEvents($events);
@@ -47,7 +63,7 @@ class EventController extends Controller
         return response()->json($newEvent, 201);
     }
 
-    // Update existing event by id
+    // Update an existing event
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -69,6 +85,7 @@ class EventController extends Controller
             if ($event['id'] == $id) {
                 $event = array_merge($event, $request->all());
                 $event['id'] = $id;
+                $event['weather'] = $this->getWeatherForLocation($event['location']);
                 $found = true;
                 break;
             }
@@ -83,7 +100,7 @@ class EventController extends Controller
         return response()->json($event, 200);
     }
 
-    // Delete event by id
+    // Delete an event
     public function destroy($id)
     {
         $events = $this->readEvents();
@@ -114,12 +131,40 @@ class EventController extends Controller
         file_put_contents($this->jsonFile, json_encode($events, JSON_PRETTY_PRINT));
     }
 
+    // Generate unique ID
     protected function generateId(array $events)
     {
         if (empty($events)) {
             return 1;
         }
+
         $ids = array_column($events, 'id');
         return max($ids) + 1;
+    }
+
+    protected function getWeatherForLocation($location)
+    {
+        $apiKey = config('services.openweather.key');
+
+        $response = Http::get("https://api.openweathermap.org/data/2.5/weather", [
+            'q' => $location,
+            'appid' => $apiKey,
+            'units' => 'metric'
+        ]);
+
+        if ($response->successful()) {
+            $data = $response->json();
+            return [
+                'temp' => $data['main']['temp'] ?? null,
+                'description' => $data['weather'][0]['description'] ?? null,
+                'icon' => $data['weather'][0]['icon'] ?? null,
+                'coord' => [
+                    'lat' => $data['coord']['lat'] ?? null,
+                    'lon' => $data['coord']['lon'] ?? null,
+                ],
+            ];
+        }
+
+        return null;
     }
 }
