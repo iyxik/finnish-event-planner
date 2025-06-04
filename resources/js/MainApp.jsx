@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Footer from './Components/Footer';
-import Header from './Components/Header';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, CircleMarker, useMap } from 'react-leaflet';
 
@@ -107,7 +105,6 @@ function App() {
 
     return (
         <>
-        <Header/>
         <div style={{ display: 'flex', gap: '20px' }}>
             <div style={{ flex: '1' }}>
                 <h1>Event Planner</h1>
@@ -250,7 +247,6 @@ function App() {
                 </MapContainer>
             </div>
         </div>
-            <Footer/>
         </>
     );
 }
