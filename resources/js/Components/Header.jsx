@@ -1,19 +1,27 @@
-import React from 'react'
-import styles from "./Header.module.css";
+import React from "react";
+import "../styles/Header.css";
+import { Link } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
-  return (
-    <>
-    <div className={styles.header}>
-    <div className={styles.logo}>Eventora.fi</div>
-        <nav className={styles.nav}>
-            <a href="#event">Events</a>
-            <a href="#form">Add Event</a>
-            <a href="#about">About Us</a>
-        </nav>
-    </div>
-</>
-  )
-}
+    return (
+        <>
+            <header className="header">
+                <div className="header-left">
+                    {/* <span className="logo-icon">🤍</span> */}
+                    <Link to="/" className="logo-text">
+                        Eventori.fi
+                    </Link>
+                </div>
 
-export default Header
+                <div className="header-center">
+                    <NavLink to="/" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Home</NavLink>
+                    <NavLink to="/events" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>All Events</NavLink>
+                    <NavLink to="/events/new" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Add Event</NavLink>
+                </div>
+            </header>
+        </>
+    );
+};
+
+export default Header;
