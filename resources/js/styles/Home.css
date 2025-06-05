@@ -14,7 +14,6 @@ body,
     color: #333;
 }
 
-/* Hero Section */
 .hero-section {
     display: flex;
     flex-wrap: wrap;
@@ -43,29 +42,30 @@ body,
     margin-bottom: 24px;
 }
 
-.hero-buttons {
-    display: flex;
-    gap: 12px;
-}
-
-.hero-buttons button {
-    padding: 10px 20px;
+.hero-button {
+    color: #111827;
     font-size: 0.95rem;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
 }
-
-.explore-btn {
-    background-color: #000;
+.hero-button .button-link {
+    text-decoration: none;
     color: #fff;
+    background-color: #002f6c;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    transition: background-color 0.2s;
 }
 
-.signup-btn {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #000;
+.hero-button .button-link:hover {
+    background-color: #2563eb;
 }
 
 .hero-image {
@@ -75,12 +75,11 @@ body,
 
 .hero-image img {
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     height: auto;
     border-radius: 8px;
 }
 
-/* Upcoming Events */
 .upcoming-events {
     text-align: center;
     padding: 60px 20px;
@@ -101,17 +100,15 @@ body,
     margin: 0 auto 40px;
 }
 
-/* Card Grid */
 .event-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     max-width: 1100px;
     margin: 0 auto 40px;
 }
 
-/* View All Button */
-.view-all-btn-container {
+.view-all {
     text-align: center;
 }
 
