@@ -4,14 +4,14 @@ body {
     font-family: "Poppins", "Trebuchet MS", "Lucida Sans Unicode",
         "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
-.event-list {
+/* .event-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
     padding: 2rem 4rem;
     justify-items: center;
-}
-.event-card {
+} */
+/* .event-card {
     position: relative;
     width: 100%;
     max-width: 280px;
@@ -29,7 +29,6 @@ body {
     transform: scale(1.02);
 }
 
-/* Placeholder Image Box */
 .event-card::before {
     content: "";
     display: block;
@@ -44,7 +43,6 @@ body {
     background-size: 48px;
 }
 
-/* Weather icon (top-right corner) */
 .weather-icon {
     position: absolute;
     top: 12px;
@@ -53,7 +51,6 @@ body {
     height: 20px;
 }
 
-/* Title */
 .event-card h2 {
     font-size: 1rem;
     font-weight: bold;
@@ -61,7 +58,6 @@ body {
     margin-bottom: 0.25rem;
 }
 
-/* Tag (e.g., Food) */
 .event-card .tag {
     display: inline-block;
     font-size: 0.75rem;
@@ -72,7 +68,6 @@ body {
     margin-bottom: 0.5rem;
 }
 
-/* Date + Location text */
 .event-card .meta {
     font-size: 0.875rem;
     color: #4b5563;
@@ -82,7 +77,6 @@ body {
     margin-bottom: 0.25rem;
 }
 
-/* Event name line */
 .event-card .subtitle {
     font-size: 0.875rem;
     font-weight: 500;
@@ -90,8 +84,7 @@ body {
     margin-bottom: 0.5rem;
 }
 
-/* Description */
 .event-card .description {
     font-size: 0.75rem;
     color: #6b7280;
-}
+} */
