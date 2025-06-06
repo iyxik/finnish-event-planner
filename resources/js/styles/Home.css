@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+    font-family: "Poppins", "Trebuchet MS", "Lucida Sans Unicode",
+        "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+body,
+.home-page {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+.hero-section {
+    position: relative;
+    height: calc(100vh - 80px);
+    background-image: url("https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.hero-content {
+    color: white;
+    max-width: 600px;
+}
+
+.hero-content.left-align {
+    text-align: left;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.125rem;
+    margin-bottom: 30px;
+    color: #e5e7eb;
+}
+
+.hero-button .button-link {
+    background-color: #3b82f6;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.hero-button .button-link:hover {
+    background-color: #2563eb;
+}
+
+.upcoming-events {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.upcoming-events h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+.upcoming-events p {
+    font-size: 0.95rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto 40px;
+}
+
+.view-all {
+    text-align: center;
+}
+
+.view-all-btn {
+    background-color: #3b82f6;
+    color: white;
+    padding: 10px 24px;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.view-all-btn:hover {
+    background-color: #2563eb;
+}
