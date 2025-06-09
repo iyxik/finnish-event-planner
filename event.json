@@ -1,6 +1,6 @@
 [
     {
-        "title": "Helsinki Day \u2013 Celebrate the Capital's Birthday!",
+        "title": "Helsinki Day - Celebrate the Capital's Birthday!",
         "date": "2025-06-12",
         "location": "Helsinki",
         "description": "Helsinki comes alive on its birthday! Expect street performances, live music, free museums, food stalls, and family-friendly activities across the city. Whether you're a first-time visitor or a local, the cheerful atmosphere is irresistible. Don't miss the open-air concerts at Senate Square!",
@@ -17,7 +17,7 @@
         }
     },
     {
-        "title": "Korso Midsummer Bonfires \u2013 A Magical Finnish Tradition",
+        "title": "Korso Midsummer Bonfires - A Magical Finnish Tradition",
         "date": "2025-06-20",
         "location": "Korso",
         "description": "Step into a Finnish fairytale with dancing, traditional folk music, and the iconic midsummer bonfire lighting on a beautiful island. Watch couples in national dress perform old folk dances, and enjoy grilled treats under the midnight sun. An unforgettable way to experience Finnish culture.",
@@ -37,7 +37,7 @@
         "title": "World Village Festival",
         "date": "2025-06-15",
         "location": "Espoo",
-        "description": "Music, activism, and food from all over the globe\u2014free entry! Join thousands to explore cultures, listen to powerful talks, try global street food, and shop ethical brands.",
+        "description": "Music, activism, and food from all over the globe-free entry! Join thousands to explore cultures, listen to powerful talks, try global street food, and shop ethical brands.",
         "image_url": null,
         "id": 3,
         "weather": {
@@ -71,7 +71,7 @@
         "title": "Flow Festival",
         "date": "2025-06-15",
         "location": "Vantaa",
-        "description": "Wake up early for a splash\u2014literally! Each year, one \"Sleepyhead\" is tossed into the sea at 7 AM, kicking off a day of festivities, parades, and local markets. It\u2019s quirky, charming, and full of small-town joy. Ideal for families and lovers of offbeat traditions.",
+        "description": "Wake up early for a splash-literally! Each year, one \"Sleepyhead\" is tossed into the sea at 7 AM, kicking off a day of festivities, parades, and local markets. It's quirky, charming, and full of small-town joy. Ideal for families and lovers of offbeat traditions.",
         "image_url": null,
         "id": "5",
         "weather": {
@@ -87,8 +87,8 @@
     {
         "title": "World Wife Carrying Championships",
         "date": "2025-06-24",
-        "location": "Sonkaj\u00e4rvi",
-        "description": "Witness (or join!) the world\u2019s most entertaining race: husbands sprinting with their wives on their backs through a muddy obstacle course. The prize? The wife\u2019s weight in beer! Fun, bizarre, and unforgettable. This is Finland\u2019s humor and heart on full display.",
+        "location": "Sonkajärvi",
+        "description": "Witness (or join!) the world's most entertaining race: husbands sprinting with their wives on their backs through a muddy obstacle course. The prize? The wife's weight in beer! Fun, bizarre, and unforgettable. This is Finland's humor and heart on full display.",
         "image_url": null,
         "id": 6,
         "weather": {
@@ -102,10 +102,10 @@
         }
     },
     {
-        "title": "Slush \u2013 Where the Future Is Born",
+        "title": "Slush - Where the Future Is Born",
         "date": "2025-06-21",
         "location": "Espoo",
-        "description": "Tech lovers, entrepreneurs, and investors unite at Europe\u2019s coolest startup conference. With electrifying keynotes, next-gen innovations, and legendary networking parties, Slush is the ultimate launchpad for bold ideas.",
+        "description": "Tech lovers, entrepreneurs, and investors unite at Europe's coolest startup conference. With electrifying keynotes, next-gen innovations, and legendary networking parties, Slush is the ultimate launchpad for bold ideas.",
         "image_url": null,
         "id": 7,
         "weather": {
@@ -136,7 +136,7 @@
         }
     },
     {
-        "title": "Ilosaarirock \u2013 Rocking the East",
+        "title": "Ilosaarirock - Rocking the East",
         "date": "2025-06-26",
         "location": "Joensuu",
         "description": "One of Finland's oldest rock festivals, Ilosaarirock features over 50 artists across multiple stages. From heavy metal to punk rock, the festival offers a diverse lineup in a vibrant setting.",
@@ -155,7 +155,7 @@
     {
         "title": "Secto Automotive Rally Finland",
         "date": "2025-06-24",
-        "location": "Jyv\u00e4skyl\u00e4",
+        "location": "Jyväskylä",
         "description": "Known as the Finnish Rally, this World Rally Championship event offers high-speed action and breathtaking landscapes. It's a must-attend for motorsport enthusiasts and adventure seekers.",
         "image_url": null,
         "id": 10,
@@ -170,10 +170,10 @@
         }
     },
     {
-        "title": "M\u00e4ntt\u00e4 Art Festival",
+        "title": "Mänttä Art Festival",
         "date": "2025-06-28",
-        "location": "M\u00e4ntt\u00e4",
-        "description": "As Finland's largest summer exhibition of contemporary art, the M\u00e4ntt\u00e4 Art Festival features works from 25 artists or groups, set against the backdrop of a charming small town. It's a haven for art lovers seeking inspiration.",
+        "location": "Mänttä",
+        "description": "As Finland's largest summer exhibition of contemporary art, the Mänttä Art Festival features works from 25 artists or groups, set against the backdrop of a charming small town. It's a haven for art lovers seeking inspiration.",
         "image_url": null,
         "id": 11,
         "weather": {
