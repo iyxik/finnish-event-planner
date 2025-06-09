@@ -1,32 +1,15 @@
 [
     {
-        "title": "Go to sauna",
-        "date": "2025-06-20",
-        "location": "Riihim\u00e4ki",
-        "description": "dfghnj",
+        "title": "Helsinki Day \u2013 Celebrate the Capital's Birthday!",
+        "date": "2025-06-12",
+        "location": "Helsinki",
+        "description": "Helsinki comes alive on its birthday! Expect street performances, live music, free museums, food stalls, and family-friendly activities across the city. Whether you're a first-time visitor or a local, the cheerful atmosphere is irresistible. Don't miss the open-air concerts at Senate Square!",
         "image_url": null,
         "id": 1,
         "weather": {
-            "temp": 14.5,
-            "description": "overcast clouds",
-            "icon": "04d",
-            "coord": {
-                "lat": 60.7377,
-                "lon": 24.7773
-            }
-        }
-    },
-    {
-        "title": "dcs",
-        "date": "2025-06-11",
-        "location": "Helsinki",
-        "description": "sad",
-        "image_url": null,
-        "id": 2,
-        "weather": {
-            "temp": 12.68,
-            "description": "broken clouds",
-            "icon": "04d",
+            "temp": 17.21,
+            "description": "light rain",
+            "icon": "10d",
             "coord": {
                 "lat": 60.1695,
                 "lon": 24.9355
@@ -34,182 +17,46 @@
         }
     },
     {
-        "title": "hm",
+        "title": "Korso Midsummer Bonfires \u2013 A Magical Finnish Tradition",
         "date": "2025-06-20",
-        "location": "Lahti",
-        "description": "bkuj,",
+        "location": "Korso",
+        "description": "Step into a Finnish fairytale with dancing, traditional folk music, and the iconic midsummer bonfire lighting on a beautiful island. Watch couples in national dress perform old folk dances, and enjoy grilled treats under the midnight sun. An unforgettable way to experience Finnish culture.",
+        "image_url": null,
+        "id": "2",
+        "weather": {
+            "temp": 15.6,
+            "description": "light rain",
+            "icon": "10d",
+            "coord": {
+                "lat": 60.3509,
+                "lon": 25.0756
+            }
+        }
+    },
+    {
+        "title": "World Village Festival",
+        "date": "2025-06-15",
+        "location": "Espoo",
+        "description": "Music, activism, and food from all over the globe\u2014free entry! Join thousands to explore cultures, listen to powerful talks, try global street food, and shop ethical brands.",
         "image_url": null,
         "id": 3,
         "weather": {
-            "temp": 16.16,
-            "description": "light rain",
-            "icon": "10d",
+            "temp": 16.58,
+            "description": "broken clouds",
+            "icon": "04d",
             "coord": {
-                "lat": 59.9911,
-                "lon": 30.1597
+                "lat": 60.25,
+                "lon": 24.6667
             }
         }
     },
     {
-        "title": "jbk",
-        "date": "2025-06-20",
-        "location": "Helsinki",
-        "description": "njl",
+        "title": "Pori Jazz Festival",
+        "date": "2025-06-17",
+        "location": "Pori",
+        "description": "Legendary names in jazz, soul, and pop gather in the charming coastal town of Pori. Enjoy big-name acts in a laid-back outdoor setting, surrounded by cafes and the scent of summer air.",
         "image_url": null,
         "id": 4,
-        "weather": {
-            "temp": 12.68,
-            "description": "broken clouds",
-            "icon": "04d",
-            "coord": {
-                "lat": 60.1695,
-                "lon": 24.9355
-            }
-        }
-    },
-    {
-        "title": "grooming",
-        "date": "2025-06-04",
-        "location": "Lahti",
-        "description": "sdfgh",
-        "image_url": null,
-        "id": 5,
-        "weather": {
-            "temp": 16.16,
-            "description": "light rain",
-            "icon": "10d",
-            "coord": {
-                "lat": 59.9911,
-                "lon": 30.1597
-            }
-        }
-    },
-    {
-        "title": "dvbdfgbzd",
-        "date": "2025-06-25",
-        "location": "Helsinki",
-        "description": "fdgfngf",
-        "image_url": null,
-        "id": 6,
-        "weather": {
-            "temp": 12.68,
-            "description": "broken clouds",
-            "icon": "04d",
-            "coord": {
-                "lat": 60.1695,
-                "lon": 24.9355
-            }
-        }
-    },
-    {
-        "title": "Sauna",
-        "date": "2025-06-20",
-        "location": "Riihim\u00e4ki",
-        "description": "scddh",
-        "image_url": null,
-        "id": 7,
-        "weather": {
-            "temp": 14.5,
-            "description": "overcast clouds",
-            "icon": "04d",
-            "coord": {
-                "lat": 60.7377,
-                "lon": 24.7773
-            }
-        }
-    },
-    {
-        "title": "efsg",
-        "date": "2025-06-05",
-        "location": "Rovaniemi",
-        "description": "fdbfg",
-        "image_url": null,
-        "id": 8,
-        "weather": {
-            "temp": 10.67,
-            "description": "light intensity shower rain",
-            "icon": "09d",
-            "coord": {
-                "lat": 66.5,
-                "lon": 25.7167
-            }
-        }
-    },
-    {
-        "title": "dsfdv",
-        "date": "2025-06-20",
-        "location": "Kuopio",
-        "description": "wdfsgdhf",
-        "image_url": null,
-        "id": 9,
-        "weather": {
-            "temp": 11.97,
-            "description": "overcast clouds",
-            "icon": "04d",
-            "coord": {
-                "lat": 62.8924,
-                "lon": 27.677
-            }
-        }
-    },
-    {
-        "title": "jjbbj,",
-        "date": "2025-06-20",
-        "location": "Kerava",
-        "description": "xscdv",
-        "image_url": null,
-        "id": 10,
-        "weather": {
-            "temp": 12.73,
-            "description": "broken clouds",
-            "icon": "04d",
-            "coord": {
-                "lat": 60.4034,
-                "lon": 25.105
-            }
-        }
-    },
-    {
-        "title": "fd\u203ad\u0192",
-        "date": "2025-06-18",
-        "location": "Lahti",
-        "description": "scdv",
-        "image_url": "https:\/\/www.google.com\/imgres?q=image&imgurl=https%3A%2F%2Fletsenhance.io%2Fstatic%2F73136da51c245e80edc6ccfe44888a99%2F1015f%2FMainBefore.jpg&imgrefurl=https%3A%2F%2Fletsenhance.io%2F&docid=-t22bY2ix3gHaM&tbnid=D2e1clQQJsbJwM&vet=12ahUKEwjYtr74hdONAxWHExAIHaEOOawQM3oECGYQAA..i&w=1280&h=720&hcb=2&itg=1&ved=2ahUKEwjYtr74hdONAxWHExAIHaEOOawQM3oECGYQAA",
-        "id": 11,
-        "weather": {
-            "temp": 16.16,
-            "description": "light rain",
-            "icon": "10d",
-            "coord": {
-                "lat": 59.9911,
-                "lon": 30.1597
-            }
-        }
-    },
-    {
-        "title": "fsbdgh",
-        "date": "2025-06-14",
-        "location": "Mikkola",
-        "description": "efrghn",
-        "image_url": null,
-        "id": 12,
-        "weather": {
-            "temp": 12.6,
-            "description": "broken clouds",
-            "icon": "04d",
-            "coord": {
-                "lat": 60.3408,
-                "lon": 25.0981
-            }
-        }
-    },
-    {
-        "title": "sc",
-        "date": "2025-06-21",
-        "location": "Pori",
-        "description": "afeg<s",
-        "image_url": null,
-        "id": 13,
         "weather": {
             "temp": 17.04,
             "description": "clear sky",
@@ -221,33 +68,84 @@
         }
     },
     {
-        "title": "v dgdgf",
-        "date": "2025-06-11",
-        "location": "mikkeli",
-        "description": "defsb",
+        "title": "Flow Festival",
+        "date": "2025-06-15",
+        "location": "Vantaa",
+        "description": "Wake up early for a splash\u2014literally! Each year, one \"Sleepyhead\" is tossed into the sea at 7 AM, kicking off a day of festivities, parades, and local markets. It\u2019s quirky, charming, and full of small-town joy. Ideal for families and lovers of offbeat traditions.",
         "image_url": null,
-        "id": 14,
+        "id": "5",
         "weather": {
-            "temp": 12.06,
-            "description": "shower rain",
-            "icon": "09d",
+            "temp": 15.92,
+            "description": "light rain",
+            "icon": "10d",
             "coord": {
-                "lat": 61.6886,
-                "lon": 27.2723
+                "lat": 60.2941,
+                "lon": 25.041
             }
         }
     },
     {
-        "title": "v d v dg",
-        "date": "2025-06-16",
-        "location": "Joensuu",
-        "description": "saafddgbg",
+        "title": "World Wife Carrying Championships",
+        "date": "2025-06-24",
+        "location": "Sonkaj\u00e4rvi",
+        "description": "Witness (or join!) the world\u2019s most entertaining race: husbands sprinting with their wives on their backs through a muddy obstacle course. The prize? The wife\u2019s weight in beer! Fun, bizarre, and unforgettable. This is Finland\u2019s humor and heart on full display.",
         "image_url": null,
-        "id": 15,
+        "id": 6,
         "weather": {
-            "temp": 16.27,
-            "description": "light rain",
-            "icon": "10d",
+            "temp": 15.35,
+            "description": "broken clouds",
+            "icon": "04d",
+            "coord": {
+                "lat": 63.6667,
+                "lon": 27.5167
+            }
+        }
+    },
+    {
+        "title": "Slush \u2013 Where the Future Is Born",
+        "date": "2025-06-21",
+        "location": "Espoo",
+        "description": "Tech lovers, entrepreneurs, and investors unite at Europe\u2019s coolest startup conference. With electrifying keynotes, next-gen innovations, and legendary networking parties, Slush is the ultimate launchpad for bold ideas.",
+        "image_url": null,
+        "id": 7,
+        "weather": {
+            "temp": 16.58,
+            "description": "broken clouds",
+            "icon": "04d",
+            "coord": {
+                "lat": 60.25,
+                "lon": 24.6667
+            }
+        }
+    },
+    {
+        "title": "Tampere Theatre Festival",
+        "date": "2025-06-25",
+        "location": "Tampere",
+        "description": "As the oldest annual theatre festival in the Nordic countries, Tampere Theatre Festival showcases a diverse range of performances, including drama, dance, and street theatre. With hundreds of performances and events, it's a must-visit for theatre enthusiasts.",
+        "image_url": null,
+        "id": 8,
+        "weather": {
+            "temp": 15.92,
+            "description": "clear sky",
+            "icon": "01d",
+            "coord": {
+                "lat": 61.4991,
+                "lon": 23.7871
+            }
+        }
+    },
+    {
+        "title": "Ilosaarirock \u2013 Rocking the East",
+        "date": "2025-06-26",
+        "location": "Joensuu",
+        "description": "One of Finland's oldest rock festivals, Ilosaarirock features over 50 artists across multiple stages. From heavy metal to punk rock, the festival offers a diverse lineup in a vibrant setting.",
+        "image_url": null,
+        "id": 9,
+        "weather": {
+            "temp": 15.27,
+            "description": "clear sky",
+            "icon": "01d",
             "coord": {
                 "lat": 62.6012,
                 "lon": 29.7632
@@ -255,147 +153,36 @@
         }
     },
     {
-        "title": "fvbnfx",
-        "date": "2025-06-19",
-        "location": "Koivukyl\u00e4",
-        "description": "sdffbn",
+        "title": "Secto Automotive Rally Finland",
+        "date": "2025-06-24",
+        "location": "Jyv\u00e4skyl\u00e4",
+        "description": "Known as the Finnish Rally, this World Rally Championship event offers high-speed action and breathtaking landscapes. It's a must-attend for motorsport enthusiasts and adventure seekers.",
         "image_url": null,
-        "id": 16,
+        "id": 10,
         "weather": {
-            "temp": 12.87,
-            "description": "broken clouds",
-            "icon": "04d",
+            "temp": 16.63,
+            "description": "clear sky",
+            "icon": "01d",
             "coord": {
-                "lat": 60.3239,
-                "lon": 25.0564
+                "lat": 62.2415,
+                "lon": 25.7209
             }
         }
     },
     {
-        "title": "xzcvv b",
-        "date": "2025-06-14",
-        "location": "porvoo",
-        "description": "sdvfbgn",
+        "title": "M\u00e4ntt\u00e4 Art Festival",
+        "date": "2025-06-28",
+        "location": "M\u00e4ntt\u00e4",
+        "description": "As Finland's largest summer exhibition of contemporary art, the M\u00e4ntt\u00e4 Art Festival features works from 25 artists or groups, set against the backdrop of a charming small town. It's a haven for art lovers seeking inspiration.",
         "image_url": null,
-        "id": 17,
+        "id": 11,
         "weather": {
-            "temp": 12.41,
+            "temp": 15.23,
             "description": "overcast clouds",
             "icon": "04d",
             "coord": {
-                "lat": 60.3923,
-                "lon": 25.6651
-            }
-        }
-    },
-    {
-        "title": "kj.nk.",
-        "date": "2025-06-12",
-        "location": "Helsinki",
-        "description": ",nm",
-        "image_url": null,
-        "id": 18,
-        "weather": {
-            "temp": 12.55,
-            "description": "broken clouds",
-            "icon": "04d",
-            "coord": {
-                "lat": 60.1695,
-                "lon": 24.9355
-            }
-        }
-    },
-    {
-        "title": "<scdfvb",
-        "date": "2025-06-13",
-        "location": "Tuusula",
-        "description": "dfvbgn",
-        "image_url": null,
-        "id": 19,
-        "weather": {
-            "temp": 13.2,
-            "description": "broken clouds",
-            "icon": "04d",
-            "coord": {
-                "lat": 60.4037,
-                "lon": 25.0264
-            }
-        }
-    },
-    {
-        "title": "wdegfnh",
-        "date": "2025-06-12",
-        "location": "Paijala",
-        "description": "dsafsbdgnngfds",
-        "image_url": null,
-        "id": 20,
-        "weather": {
-            "temp": 13.16,
-            "description": "broken clouds",
-            "icon": "04d",
-            "coord": {
-                "lat": 60.421,
-                "lon": 25.0203
-            }
-        }
-    },
-    {
-        "title": "sxvdc b",
-        "date": "2025-06-13",
-        "location": "ainola",
-        "description": "sdfv",
-        "image_url": null,
-        "id": 21,
-        "weather": {
-            "temp": 18.97,
-            "description": "few clouds",
-            "icon": "02d",
-            "coord": {
-                "lat": 62.2299,
-                "lon": 25.7569
-            }
-        }
-    },
-    {
-        "title": "sads",
-        "date": "2025-06-05",
-        "location": "sxcd",
-        "description": "sxcd",
-        "image_url": null,
-        "id": 22,
-        "weather": null
-    },
-    {
-        "title": "dsfg",
-        "date": "2025-06-06",
-        "location": "j\u00e4rvenp\u00e4\u00e4",
-        "description": "sdfgh",
-        "image_url": null,
-        "id": 23,
-        "weather": {
-            "temp": 17.85,
-            "description": "scattered clouds",
-            "icon": "03d",
-            "coord": {
-                "lat": 60.4737,
-                "lon": 25.0899
-            }
-        }
-    },
-    {
-        "title": "dafsdgf",
-        "date": "2025-06-20",
-        "location": "kerava",
-        "description": "cadbf",
-        "image_url": null,
-        "id": 24,
-        "weather": {
-            "temp": 18.13,
-            "description": "scattered clouds",
-            "icon": "03d",
-            "coord": {
-                "lat": 60.4034,
-                "lon": 25.105
+                "lat": 62.0301,
+                "lon": 24.6279
             }
         }
     }
