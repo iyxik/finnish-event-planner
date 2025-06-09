@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Filters from "../Components/Events/Filters";
 import EventList from "../Components/Events/EventList";
 import MapView from "../Components/Map/MapView";
-import Header from "../Components/Header";
-import Footer from "../Components/Footer";
 
 const EventListPage = () => {
     const [events, setEvents] = useState([]);
@@ -35,7 +33,6 @@ const EventListPage = () => {
         : null;
     return (
         <>
-            <Header />
             <div className="event-list-page">
                 <Filters
                     filterCity={filterCity}
@@ -87,7 +84,6 @@ const EventListPage = () => {
                     activeEvent={activeEvent}
                 />
             </div>
-            <Footer />
         </>
     );
 };

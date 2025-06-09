@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+// src/Components/Register.jsx
 
-function Register() {
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "../styles/Register.css";
+
+// Register now accepts 'user', 'onLogout', AND 'onRegisterSuccess' props
+function Register({ user, onLogout, onRegisterSuccess }) {
+    // <--- Added onRegisterSuccess
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         password: "",
         password_confirmation: "",
     });
-
     const [message, setMessage] = useState("");
 
     const handleChange = (e) => {
@@ -17,99 +22,58 @@ function Register() {
         }));
     };
 
-    // --- CRITICAL CHANGE HERE ---
-    // This function must decode the cookie value because the browser
-    // might URL-encode it when storing it.
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) {
-            const cookieValue = parts.pop().split(";").shift();
-            // Decode the value that was stored by the browser
-            return decodeURIComponent(cookieValue);
-        }
-        return null;
-    }
-    // --- END CRITICAL CHANGE ---
-
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setMessage("");
 
         try {
-            // 1. Fetch CSRF cookie: This sets the XSRF-TOKEN cookie in your browser.
-            await fetch("http://localhost:8000/sanctum/csrf-cookie", {
-                credentials: "include",
-            });
-
-            // 2. Retrieve the XSRF-TOKEN from the browser's cookies.
-            //    getCookie() now returns the correctly URL-decoded token.
-            const csrfToken = getCookie("XSRF-TOKEN");
-            console.log("CSRF token after fetch (from getCookie):", csrfToken); // Inspect this output!
-
-            // 3. Send the registration request with the X-XSRF-TOKEN header.
             const res = await fetch("http://localhost:8000/register", {
                 method: "POST",
-                credentials: "include", // Important to send cookies!
-                headers: {
-                    "Content-Type": "application/json",
-                    // The X-XSRF-TOKEN header must be the URL-decoded value.
-                    // Since getCookie() now handles the decoding, we pass it directly.
-                    "X-XSRF-TOKEN": csrfToken || "",
-                },
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             });
 
-            // --- Error Handling (improved) ---
-            // If response is not ok, parse the error response as text first
-            // to avoid SyntaxError if it's HTML, then try JSON.
-            if (!res.ok) {
-                // If 419, it's a CSRF error, Laravel returns HTML
-                if (res.status === 419) {
-                    setMessage(
-                        "Registration failed: CSRF token mismatch. Please try again."
-                    );
-                } else {
-                    // For other errors, try to parse as JSON for specific messages
-                    const errorText = await res.text();
-                    try {
-                        const data = JSON.parse(errorText);
-                        if (res.status === 422 && data.errors) {
-                            const errorMessages = Object.values(data.errors)
-                                .flat()
-                                .join(" ");
-                            setMessage(`Registration failed: ${errorMessages}`);
-                        } else {
-                            setMessage(
-                                data.message ||
-                                    `Registration failed: ${errorText}`
-                            );
-                        }
-                    } catch (jsonError) {
-                        // If it's not valid JSON, show generic error with raw text
-                        setMessage(`Registration failed: ${errorText}`);
-                    }
-                }
-            } else {
-                // If response is OK, parse as JSON
+            if (res.ok) {
                 const data = await res.json();
-                setMessage("Registration successful! You can now login.");
-                setFormData({
-                    name: "",
-                    email: "",
-                    password: "",
-                    password_confirmation: "",
-                });
+                setMessage(data.message || "Registration successful!");
+                // --- NEW: Call onRegisterSuccess to update user state in App.jsx ---
+                onRegisterSuccess(data); // Pass the entire response data
+                // Assuming Laravel's default /register endpoint logs the user in and returns user data.
+            } else {
+                const errorData = await res.json();
+                setMessage(errorData.message || "Registration failed.");
+                if (errorData.errors) {
+                    const errorMessages = Object.values(errorData.errors)
+                        .flat()
+                        .join(" ");
+                    setMessage((prev) => prev + " " + errorMessages);
+                }
             }
         } catch (error) {
-            console.error("Fetch error:", error);
-            setMessage("An error occurred. Try again.");
+            console.error("Registration error:", error);
+            setMessage("An error occurred during registration. Try again.");
         }
     };
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <h2>Register</h2>
+    if (user) {
+        return (
+            <div className="logged-in-message">
+                <h2>You are already logged in!</h2>
+                <p>Welcome back, {user.name || user.email}.</p>
+                <button onClick={onLogout} className="logout-button">
+                    Logout
+                </button>
+                <Link to="/" className="home-link">
+                    Go to Home Page
+                </Link>
+            </div>
+        );
+    }
 
+    return (
+        <form onSubmit={handleSubmit} className="register-form">
+            <h2>Register</h2>
             <input
                 name="name"
                 type="text"
@@ -118,7 +82,6 @@ function Register() {
                 onChange={handleChange}
                 required
             />
-
             <input
                 name="email"
                 type="email"
@@ -127,7 +90,6 @@ function Register() {
                 onChange={handleChange}
                 required
             />
-
             <input
                 name="password"
                 type="password"
@@ -136,7 +98,6 @@ function Register() {
                 onChange={handleChange}
                 required
             />
-
             <input
                 name="password_confirmation"
                 type="password"
@@ -148,7 +109,15 @@ function Register() {
 
             <button type="submit">Register</button>
 
-            {message && <p>{message}</p>}
+            {message && (
+                <p
+                    className={`register-message ${
+                        message.includes("successful") ? "success" : "error"
+                    }`}
+                >
+                    {message}
+                </p>
+            )}
         </form>
     );
 }

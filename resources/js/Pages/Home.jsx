@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import EventCard from "../Components/Events/EventCard";
-import Header from "../Components/Header";
-import Footer from "../Components/Footer";
+
 import { NavLink } from "react-router-dom";
 import "../styles/Home.css";
 
@@ -16,7 +15,6 @@ function Home() {
 
     return (
         <div className="home-page">
-            <Header />
             <section className="hero-section">
                 <div className="hero-overlay">
                     <div className="hero-content left-align">
@@ -55,8 +53,6 @@ function Home() {
                     </NavLink>
                 </div>
             </section>
-
-            <Footer />
         </div>
     );
 }

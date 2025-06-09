@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import EventForm from "../Components/Events/EventForm";
-import Header from "../Components/Header";
-import Footer from "../Components/Footer";
 
 const FormPage = () => {
     const [newEventData, setNewEventData] = useState({
@@ -42,7 +40,6 @@ const FormPage = () => {
 
     return (
         <>
-            <Header />
             <div className="event-form-page">
                 <h1>Create New Event</h1>
                 <EventForm
@@ -51,7 +48,6 @@ const FormPage = () => {
                     handleNewEventSubmit={handleNewEventSubmit}
                 />
             </div>
-            <Footer />
         </>
     );
 };

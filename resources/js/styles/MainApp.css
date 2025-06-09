@@ -4,6 +4,20 @@ body {
     font-family: "Poppins", "Trebuchet MS", "Lucida Sans Unicode",
         "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
+
+.app-layout {
+    display: flex; /* Enables Flexbox */
+    flex-direction: column; /* Stacks children vertically: Header, Content, Footer */
+    min-height: 100vh; /* Ensures the container is at least the height of the viewport */
+    /* If you have a specific background for the whole page, apply it here */
+}
+
+.app-content {
+    flex-grow: 1; /* This is the magic: it makes this section expand to fill all available space, pushing the footer down */
+    /* You might want to add some padding here to prevent content from touching the edges */
+    /* Example padding */
+    box-sizing: border-box; /* Include padding in element's total width/height */
+}
 /* .event-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

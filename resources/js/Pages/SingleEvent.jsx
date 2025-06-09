@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Header from "../Components/Header";
-import Footer from "../Components/Footer";
 
 const SingleEvent = ({ idFromLaravel }) => {
     const [event, setEvent] = useState(null);
@@ -17,7 +15,6 @@ const SingleEvent = ({ idFromLaravel }) => {
 
     return (
         <>
-            <Header />
             <div className="single-event">
                 <h1>{event.title}</h1>
                 <p>
@@ -28,7 +25,6 @@ const SingleEvent = ({ idFromLaravel }) => {
                     <img src={event.image_url} alt={event.title} />
                 )}
             </div>
-            <Footer />
         </>
     );
 };

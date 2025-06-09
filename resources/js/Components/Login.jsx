@@ -1,12 +1,13 @@
+// src/Components/Login.jsx
+
 import React, { useState } from "react";
-// If you decide to use Axios in the future, you would import it here:
-// import axios from "axios";
+import { Link } from "react-router-dom";
+import "../styles/Login.css"; // <--- Import the CSS file
 
-function Login({ onLogin }) {
+function Login({ onLogin, user, onLogout }) {
     const [formData, setFormData] = useState({ email: "", password: "" });
-    const [message, setMessage] = useState(""); // For displaying success/error messages to the user
+    const [message, setMessage] = useState("");
 
-    // Handles changes in form inputs and updates the state
     const handleChange = (e) => {
         setFormData((prev) => ({
             ...prev,
@@ -14,54 +15,62 @@ function Login({ onLogin }) {
         }));
     };
 
-    // Handles form submission
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission behavior (page reload)
-        setMessage(""); // Clear any previous messages when submitting
+        e.preventDefault();
+        setMessage("");
 
         try {
-            // STEP 1: No need to fetch CSRF cookie if the login route is excluded from CSRF middleware.
-            // If you were NOT excluding it from CSRF, you would keep the fetch for sanctum/csrf-cookie here.
-            // await fetch("http://localhost:8000/sanctum/csrf-cookie", { credentials: "include" });
-
-            // STEP 2: Send the login request to the correct endpoint
-            // Changed from /api/login to /login as per your Laravel web.php route
             const res = await fetch("http://localhost:8000/login", {
                 method: "POST",
-                credentials: "include", // Essential for sending/receiving cookies (like session)
+                credentials: "include",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             });
 
-            // Check if the response was NOT successful (e.g., 401 Unauthorized, 422 Unprocessable Entity)
             if (!res.ok) {
-                // Attempt to parse the error response JSON
                 const errorData = await res.json();
                 setMessage(
                     errorData.message ||
                         "Login failed. Please check your credentials."
                 );
-                return; // Stop further execution if login failed
+                return;
             }
 
-            // STEP 3: Login was successful!
-            // Assuming your Laravel AuthController's login method returns user data directly.
-            // If it doesn't, and you still need a separate call to /user, keep that fetch.
-            const userData = await res.json(); // Parse the successful login response
-
+            const userData = await res.json();
             setMessage("Login successful!");
-            onLogin(userData); // Pass the user data to the parent component (e.g., App.js)
+            onLogin(userData);
         } catch (error) {
-            // This catches network errors or issues with JSON parsing if the server sends non-JSON
             console.error("Login error:", error);
-            setMessage("An unexpected error occurred. Please try again later.");
+            setMessage("An error occurred during login. Please try again.");
         }
     };
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <h2>Login</h2>
+    if (user) {
+        return (
+            <div className="logged-in-message">
+                {" "}
+                {/* Use className */}
+                <h2>You are already logged in!</h2>
+                <p>Welcome back, {user.name || user.email}.</p>
+                <button
+                    onClick={onLogout}
+                    className="logout-button" // Use className
+                >
+                    Logout
+                </button>
+                <Link to="/" className="home-link">
+                    Go to Home Page
+                </Link>{" "}
+                {/* Use className */}
+            </div>
+        );
+    }
 
+    return (
+        <form onSubmit={handleSubmit} className="login-form">
+            {" "}
+            {/* Use className */}
+            <h2>Login</h2>
             <input
                 name="email"
                 type="email"
@@ -70,7 +79,6 @@ function Login({ onLogin }) {
                 onChange={handleChange}
                 required
             />
-
             <input
                 name="password"
                 type="password"
@@ -79,15 +87,12 @@ function Login({ onLogin }) {
                 onChange={handleChange}
                 required
             />
-
             <button type="submit">Login</button>
-
-            {/* Display messages to the user, with conditional styling */}
             {message && (
                 <p
-                    style={{
-                        color: message.includes("successful") ? "green" : "red",
-                    }}
+                    className={`login-message ${
+                        message.includes("successful") ? "success" : "error"
+                    }`}
                 >
                     {message}
                 </p>

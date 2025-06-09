@@ -1,14 +1,19 @@
+// src/Components/Header.jsx
+
 import React from "react";
 import "../styles/Header.css";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom"; // Removed useNavigate, as it's not needed here
 
-const Header = () => {
-    const navigate = useNavigate();
-    const token = localStorage.getItem("access_token");
+// Accept user and onLogout as props from App.jsx
+const Header = ({ user, onLogout }) => {
+    // We no longer need to manage navigate or token directly here,
+    // as the user state and logout logic are managed by App.jsx and passed down.
+    // const navigate = useNavigate();
+    // const token = localStorage.getItem("access_token");
 
-    const handleLogout = () => {
-        localStorage.removeItem("access_token");
-        navigate("/login");
+    // This function will now call the onLogout prop received from App.jsx
+    const handleLogoutClick = () => {
+        onLogout(); // This will trigger the logout logic in App.jsx
     };
 
     return (
@@ -47,7 +52,8 @@ const Header = () => {
             </div>
 
             <div className="header-right">
-                {!token ? (
+                {/* Conditional rendering based on the 'user' prop */}
+                {!user ? ( // If 'user' is null (not logged in)
                     <>
                         <NavLink to="/register" className="nav-link">
                             Register
@@ -57,9 +63,19 @@ const Header = () => {
                         </NavLink>
                     </>
                 ) : (
-                    <button className="logout-button" onClick={handleLogout}>
-                        Logout
-                    </button>
+                    // If 'user' is not null (logged in)
+                    <>
+                        <span className="welcome-text">
+                            Welcome, {user.name || user.email}!{" "}
+                            {/* Display user's name or email */}
+                        </span>
+                        <button
+                            className="logout-button"
+                            onClick={handleLogoutClick}
+                        >
+                            Logout
+                        </button>
+                    </>
                 )}
             </div>
         </header>
