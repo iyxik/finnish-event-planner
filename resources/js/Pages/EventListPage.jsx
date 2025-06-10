@@ -63,6 +63,7 @@ const EventListPage = () => {
                             method: "PUT",
                             headers: { "Content-Type": "application/json" },
                             body: JSON.stringify(editingData),
+                            credentials: "include",
                         });
                         if (res.ok) {
                             setEditingId(null);
@@ -73,8 +74,19 @@ const EventListPage = () => {
                         if (confirm("Are you sure?")) {
                             const res = await fetch(`/api/events/${id}`, {
                                 method: "DELETE",
+                                credentials: "include",
                             });
                             if (res.ok) fetchEvents();
+                        } else {
+                            // Add some error logging for debugging
+                            console.error(
+                                "Failed to delete event:",
+                                res.status,
+                                await res.text()
+                            );
+                            alert(
+                                "Failed to delete event. Please check console for details."
+                            );
                         }
                     }}
                     setActiveEvent={setActiveEvent}

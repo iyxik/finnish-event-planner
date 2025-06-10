@@ -60,16 +60,24 @@ class AuthController extends Controller
     // Logout user
     public function logout(Request $request)
     {
-        Auth::logout();
+        // 1. Revoke the current access token (if any).
+        // This is important if you ever issue API tokens, even if your SPA primarily uses session.
+        if ($request->user()) { // Check if a user is authenticated
+            $request->user()->currentAccessToken()->delete();
+        }
 
+        // 2. Explicitly log out from the 'web' guard (for session authentication).
+        // This is crucial for Sanctum SPAs using sessions.
+        Auth::guard('web')->logout();
+
+        // 3. Invalidate and regenerate the session.
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
         return response()->json([
             'message' => 'Logged out successfully',
-        ]);
+        ], 200); // Return a 200 OK or 204 No Content
     }
-
     // Get authenticated user
     public function user(Request $request)
     {
