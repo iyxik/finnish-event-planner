@@ -1,5 +1,6 @@
 .eventCard {
     background-color: #ffffff;
+    color: var(--card-text);
     border: 1px solid #e5e7eb;
     border-radius: 1rem;
     padding: 1.25rem;
