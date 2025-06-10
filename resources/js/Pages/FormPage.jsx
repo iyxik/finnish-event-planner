@@ -32,8 +32,6 @@ const FormPage = () => {
     };
 
     return (
-        <>
-        <Header/>
         <div className="event-form-page">
             <h1>Create New Event</h1>
             <EventForm
@@ -42,8 +40,6 @@ const FormPage = () => {
                 handleNewEventSubmit={handleNewEventSubmit}
             />
         </div>
-        <Footer/>
-        </>
     );
 }
 

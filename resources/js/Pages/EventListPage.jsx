@@ -33,8 +33,6 @@ const EventListPage = () => {
             ? [activeEvent.weather.coord.lat, activeEvent.weather.coord.lon]
             : null;
   return (
-    <>
-    <Header/>
     <div className="event-list-page">
             <Filters
                 filterCity={filterCity}
@@ -78,8 +76,7 @@ const EventListPage = () => {
             />
             <MapView activePosition={activePosition} activeEvent={activeEvent} />
         </div>
-        <Footer/>
-        </>
+
     );
 }
 
