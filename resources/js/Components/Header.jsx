@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/Header.css";
 import { Link } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
     return (
@@ -18,6 +19,7 @@ const Header = () => {
                     <NavLink to="/" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Home</NavLink>
                     <NavLink to="/events" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>All Events</NavLink>
                     <NavLink to="/events/new" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Add Event</NavLink>
+                    <ThemeToggle/>
                 </div>
             </header>
         </>
