@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Login.css";
+import { FaLock, FaEnvelope} from 'react-icons/fa';
 
 function Login({ onLogin, user, onLogout }) {
     const [formData, setFormData] = useState({ email: "", password: "" });
@@ -63,23 +64,35 @@ function Login({ onLogin, user, onLogout }) {
         <form onSubmit={handleSubmit} className="login-form">
             {" "}
             <h2>Login</h2>
-            <input
-                name="email"
-                type="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-            />
-            <input
-                name="password"
-                type="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-            />
-            <button type="submit">Login</button>
+            <div className="form-group">
+                <label>
+                    <FaEnvelope style={{ marginRight: "6px" }} />
+                    Email
+                </label>
+                <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder=" "
+                    required
+                />
+            </div>
+            <div className="form-group">
+                <label>
+                    <FaLock style={{ marginRight: "6px" }} />
+                    Password
+                </label>
+                <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder=" "
+                    required
+                />
+            </div>
+            <button type="submit" className="login-button">Login</button>
             {message && (
                 <p
                     className={`login-message ${

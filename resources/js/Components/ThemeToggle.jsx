@@ -19,14 +19,14 @@ const ThemeToggle = () => {
 
   return (
     <button onClick={toggleTheme} style={{
-      backgroundColor: 'var(--button-bg)',
-      color: 'var(--button-text)',
+      backgroundColor:  theme === "dark" ? '#ffffff': 'var(--button-bg)',
+      color: theme === "dark" ? "#000000": 'var(--button-text)',
       borderRadius: '50px',
       padding: '0.2rem 0.5rem',
       fontWeight: 600,
       cursor: 'pointer'
     }}>
-      {theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
+      {theme === 'dark' ? '☀️' : '🌙'}
     </button>
   );
 };

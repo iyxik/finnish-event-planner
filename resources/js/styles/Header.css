@@ -7,6 +7,25 @@
     background-color: var(--header-bg);
     color: var(--header-text);
     height: 2.7rem;
+    position: relative;
+}
+
+.header-left,
+.header-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.header-right {
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.header-center-wrapper {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .header-left {

@@ -15,32 +15,35 @@ const Header = ({ user, onLogout }) => {
                     Eventori.fi
                 </Link>
             </div>
-
-            <div className="header-center">
-                <NavLink
-                    to="/"
-                    className={({ isActive }) =>
-                        isActive ? "nav-link active" : "nav-link"
-                    }
-                >
-                    Home
-                </NavLink>
-                <NavLink
-                    to="/events"
-                    className={({ isActive }) =>
-                        isActive ? "nav-link active" : "nav-link"
-                    }
-                >
-                    All Events
-                </NavLink>
-                <NavLink
-                    to="/events/new"
-                    className={({ isActive }) =>
-                        isActive ? "nav-link active" : "nav-link"
-                    }
-                >
-                    Add Event
-                </NavLink>
+            <div className="header-center-wrapper">
+                <div className="header-center">
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            isActive ? "nav-link active" : "nav-link"
+                        }
+                        end
+                    >
+                        Home
+                    </NavLink>
+                    <NavLink
+                        to="/events"
+                        className={({ isActive }) =>
+                            isActive ? "nav-link active" : "nav-link"
+                        }
+                        end
+                    >
+                        All Events
+                    </NavLink>
+                    <NavLink
+                        to="/events/new"
+                        className={({ isActive }) =>
+                            isActive ? "nav-link active" : "nav-link"
+                        }
+                    >
+                        Add Event
+                    </NavLink>
+                </div>
             </div>
 
             <div className="header-right">

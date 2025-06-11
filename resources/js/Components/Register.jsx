@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Register.css";
+import { FaLock, FaEnvelope,FaUser,FaCheck } from 'react-icons/fa';
 
 function Register({ user, onLogout, onRegisterSuccess }) {
     const [formData, setFormData] = useState({
@@ -69,39 +70,65 @@ function Register({ user, onLogout, onRegisterSuccess }) {
     return (
         <form onSubmit={handleSubmit} className="register-form">
             <h2>Register</h2>
-            <input
-                name="name"
-                type="text"
-                placeholder="Name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-            />
-            <input
-                name="email"
-                type="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-            />
-            <input
-                name="password"
-                type="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-            />
-            <input
-                name="password_confirmation"
-                type="password"
-                placeholder="Confirm Password"
-                value={formData.password_confirmation}
-                onChange={handleChange}
-                required
-            />
+                  <div className="form-group">
+        <input
+          type="text"
+          name="name"
+          placeholder=" "
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        <label>
+          <FaUser style={{ marginRight: "6px" }} />
+          Name
+        </label>
+      </div>
 
+      <div className="form-group">
+        <input
+          type="email"
+          name="email"
+          placeholder=" "
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <label>
+          <FaEnvelope style={{ marginRight: "6px" }} />
+          Email
+        </label>
+      </div>
+
+      <div className="form-group">
+        <input
+          type="password"
+          name="password"
+          placeholder=" "
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        <label>
+          <FaLock style={{ marginRight: "6px" }} />
+          Password
+        </label>
+      </div>
+
+      <div className="form-group">
+        <input
+          type="password"
+          name="password_confirmation"
+          placeholder=" "
+          value={formData.password_confirmation}
+          onChange={handleChange}
+          required
+        />
+        <label>
+          <FaCheck style={{ marginRight: "6px" }} />
+          Confirm Password
+        </label>
+      </div>
             <button type="submit">Register</button>
 
             {message && (
