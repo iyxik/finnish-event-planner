@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import EventForm from "../Components/Events/EventForm";
+import "../styles/FormPage.css";
 
 const FormPage = () => {
     const [newEventData, setNewEventData] = useState({
@@ -39,16 +40,13 @@ const FormPage = () => {
     };
 
     return (
-        <>
-            <div className="event-form-page">
-                <h1>Create New Event</h1>
-                <EventForm
-                    newEventData={newEventData}
-                    handleNewInputChange={handleNewInputChange}
-                    handleNewEventSubmit={handleNewEventSubmit}
-                />
-            </div>
-        </>
+        <div className="form-background">
+            <EventForm
+                newEventData={newEventData}
+                handleNewInputChange={handleNewInputChange}
+                handleNewEventSubmit={handleNewEventSubmit}
+            />
+        </div>
     );
 };
 

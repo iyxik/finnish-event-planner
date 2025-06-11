@@ -1,0 +1,215 @@
+.event-form-page {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem 2.5rem;
+    background-color: var(--section-bg);
+    border-radius: 16px;
+    border: 2px solid var(--header-bg);
+    box-shadow: 0 8px 32px rgba(22, 82, 166, 0.1);
+    color: var(--text-color);
+}
+
+.event-form-page h1 {
+    text-align: left;
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--heading-color);
+}
+
+.event-form-page p {
+    text-align: left;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1;
+    font-weight: 600;
+    color: var(--subtext-color);
+}
+
+.event-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.event-form label {
+    position: absolute;
+    top: -9px;
+    left: 12px;
+    background-color: var(--section-bg);
+    padding: 0 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--link-color);
+    z-index: 1;
+    font-weight: 700;
+}
+
+.event-form input,
+.event-form textarea {
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    background-color: var(--section-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    font-family: "Poppins", sans-serif;
+}
+
+.event-form input:focus,
+.event-form textarea:focus {
+    border-color: var(--link-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 47, 108, 0.1);
+}
+
+.event-form textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.5;
+}
+
+.event-form button {
+    padding: 1rem 2rem;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.event-form button:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 47, 108, 0.2);
+}
+
+.event-form button:active {
+    transform: translateY(0);
+}
+
+.event-form input:not(:placeholder-shown),
+.event-form textarea:not(:placeholder-shown) {
+    padding-top: 1.4rem;
+    padding-bottom: 0.6rem;
+}
+
+.event-form input:not(:placeholder-shown) + label,
+.event-form textarea:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: 0.85rem;
+}
+
+.event-form input:focus + label,
+.event-form textarea:focus + label {
+    color: var(--heading-hover);
+}
+
+.dark .event-form-page {
+    border-color: var(--button-hover-bg);
+    background-color: var(--bg-color);
+}
+
+.dark .event-form label {
+    background-color: var(--bg-color);
+    color: var(--link-hover);
+}
+
+.dark .event-form input,
+.dark .event-form textarea {
+    border-color: #374151;
+    background-color: #1a1a1a;
+}
+
+.dark .event-form input:focus,
+.dark .event-form textarea:focus {
+    border-color: var(--link-hover);
+    box-shadow: 0 0 0 3px rgba(29, 236, 255, 0.1);
+}
+
+.dark .event-form input:not(:placeholder-shown) + label,
+.dark .event-form textarea:not(:placeholder-shown) + label {
+    color: var(--link-hover);
+}
+
+.dark .event-form-page h1 {
+    color: var(--hero-heading-color);
+}
+
+.dark .event-form-page p {
+    color: var(--hero-paragraph-color);
+}
+
+@media (max-width: 768px) {
+    .event-form-page {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .event-form-page h1 {
+        font-size: 1.6rem;
+    }
+
+    .event-form-page p {
+        font-size: 1rem;
+    }
+
+    .event-form input,
+    .event-form textarea {
+        font-size: 0.95rem;
+        padding: 0.85rem;
+    }
+
+    .event-form button {
+        font-size: 0.95rem;
+        padding: 0.85rem 1.5rem;
+    }
+
+    .event-form label {
+        font-size: 0.8rem;
+        top: -8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .event-form-page {
+        margin: 1rem auto;
+        padding: 1.25rem 1rem;
+        border-radius: 12px;
+    }
+
+    .event-form-page h1 {
+        font-size: 1.4rem;
+    }
+
+    .event-form-page p {
+        font-size: 0.95rem;
+    }
+
+    .event-form input,
+    .event-form textarea {
+        font-size: 0.9rem;
+    }
+
+    .event-form button {
+        font-size: 0.9rem;
+    }
+
+    .event-form {
+        gap: 1.5rem;
+    }
+}

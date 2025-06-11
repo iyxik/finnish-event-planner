@@ -1,8 +1,6 @@
-// src/Components/Login.jsx
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../styles/Login.css"; // <--- Import the CSS file
+import "../styles/Login.css";
 
 function Login({ onLogin, user, onLogout }) {
     const [formData, setFormData] = useState({ email: "", password: "" });
@@ -49,19 +47,14 @@ function Login({ onLogin, user, onLogout }) {
         return (
             <div className="logged-in-message">
                 {" "}
-                {/* Use className */}
                 <h2>You are already logged in!</h2>
                 <p>Welcome back, {user.name || user.email}.</p>
-                <button
-                    onClick={onLogout}
-                    className="logout-button" // Use className
-                >
+                <button onClick={onLogout} className="logout-button">
                     Logout
                 </button>
                 <Link to="/" className="home-link">
                     Go to Home Page
                 </Link>{" "}
-                {/* Use className */}
             </div>
         );
     }
@@ -69,7 +62,6 @@ function Login({ onLogin, user, onLogout }) {
     return (
         <form onSubmit={handleSubmit} className="login-form">
             {" "}
-            {/* Use className */}
             <h2>Login</h2>
             <input
                 name="email"

@@ -1,12 +1,8 @@
-// src/Components/Register.jsx
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Register.css";
 
-// Register now accepts 'user', 'onLogout', AND 'onRegisterSuccess' props
 function Register({ user, onLogout, onRegisterSuccess }) {
-    // <--- Added onRegisterSuccess
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -37,9 +33,8 @@ function Register({ user, onLogout, onRegisterSuccess }) {
             if (res.ok) {
                 const data = await res.json();
                 setMessage(data.message || "Registration successful!");
-                // --- NEW: Call onRegisterSuccess to update user state in App.jsx ---
-                onRegisterSuccess(data); // Pass the entire response data
-                // Assuming Laravel's default /register endpoint logs the user in and returns user data.
+
+                onRegisterSuccess(data);
             } else {
                 const errorData = await res.json();
                 setMessage(errorData.message || "Registration failed.");

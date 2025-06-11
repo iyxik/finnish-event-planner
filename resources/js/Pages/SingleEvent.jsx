@@ -14,18 +14,14 @@ const SingleEvent = ({ idFromLaravel }) => {
     if (!event) return <p>Loading...</p>;
 
     return (
-        <>
-            <div className="single-event">
-                <h1>{event.title}</h1>
-                <p>
-                    {event.date} - {event.location}
-                </p>
-                <p>{event.description}</p>
-                {event.image_url && (
-                    <img src={event.image_url} alt={event.title} />
-                )}
-            </div>
-        </>
+        <div className="single-event">
+            <h1>{event.title}</h1>
+            <p>
+                {event.date} - {event.location}
+            </p>
+            <p>{event.description}</p>
+            {event.image_url && <img src={event.image_url} alt={event.title} />}
+        </div>
     );
 };
 export default SingleEvent;

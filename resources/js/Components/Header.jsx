@@ -1,19 +1,11 @@
-// src/Components/Header.jsx
-
 import React from "react";
 import "../styles/Header.css";
-import { Link, NavLink } from "react-router-dom"; // Removed useNavigate, as it's not needed here
+import { Link, NavLink } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 
-// Accept user and onLogout as props from App.jsx
 const Header = ({ user, onLogout }) => {
-    // We no longer need to manage navigate or token directly here,
-    // as the user state and logout logic are managed by App.jsx and passed down.
-    // const navigate = useNavigate();
-    // const token = localStorage.getItem("access_token");
-
-    // This function will now call the onLogout prop received from App.jsx
     const handleLogoutClick = () => {
-        onLogout(); // This will trigger the logout logic in App.jsx
+        onLogout();
     };
 
     return (
@@ -52,8 +44,7 @@ const Header = ({ user, onLogout }) => {
             </div>
 
             <div className="header-right">
-                {/* Conditional rendering based on the 'user' prop */}
-                {!user ? ( // If 'user' is null (not logged in)
+                {!user ? (
                     <>
                         <NavLink to="/register" className="nav-link">
                             Register
@@ -61,13 +52,12 @@ const Header = ({ user, onLogout }) => {
                         <NavLink to="/login" className="nav-link">
                             Login
                         </NavLink>
+                        <ThemeToggle />
                     </>
                 ) : (
-                    // If 'user' is not null (logged in)
                     <>
                         <span className="welcome-text">
                             Welcome, {user.name || user.email}!{" "}
-                            {/* Display user's name or email */}
                         </span>
                         <button
                             className="logout-button"
@@ -75,6 +65,7 @@ const Header = ({ user, onLogout }) => {
                         >
                             Logout
                         </button>
+                        <ThemeToggle />
                     </>
                 )}
             </div>

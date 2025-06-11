@@ -37,8 +37,8 @@ function Home() {
             </section>
 
             <section className="upcoming-events">
-                <h2>Upcoming Events</h2>
-                <p>
+                <h3>Upcoming Events</h3>
+                <p className="subtext-color2">
                     You can find the latest upcoming events near you in this
                     section
                 </p>

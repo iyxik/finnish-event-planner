@@ -10,8 +10,8 @@ body,
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 .hero-section {
     position: relative;
@@ -26,7 +26,7 @@ body,
 }
 
 .hero-overlay {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--hero-overlay-bg);
     width: 100%;
     height: 100%;
     display: flex;
@@ -37,7 +37,7 @@ body,
 }
 
 .hero-content {
-    color: white;
+    color: var(--hero-heading-color);
     max-width: 600px;
 }
 
@@ -50,17 +50,18 @@ body,
     font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.2;
+    color: var(--hero-heading-color);
 }
 
 .hero-content p {
     font-size: 1.125rem;
     margin-bottom: 30px;
-    color: #e5e7eb;
+    color: var(--hero-paragraph-color);
 }
 
 .hero-button .button-link {
-    background-color: #3b82f6;
-    color: #fff;
+    background-color: var(--button-bg);
+    color: var(--button-text);
     font-size: 1rem;
     font-weight: 600;
     padding: 0.75rem 1.5rem;
@@ -70,25 +71,25 @@ body,
 }
 
 .hero-button .button-link:hover {
-    background-color: #2563eb;
+    background-color: var(--button-hover-bg);
 }
 
 .upcoming-events {
     text-align: center;
     padding: 60px 20px;
-    background-color: #fff;
+    background-color: var(--bg-color);
 }
 
 .upcoming-events h2 {
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 10px;
-    color: #111827;
+    color: var(--card-text);
 }
 
 .upcoming-events p {
     font-size: 0.95rem;
-    color: #6b7280;
+    color: var(--subtext-color);
     max-width: 600px;
     margin: 0 auto 40px;
 }
@@ -106,8 +107,8 @@ body,
 }
 
 .view-all-btn {
-    background-color: #3b82f6;
-    color: white;
+    background-color: var(--button-bg);
+    color: var(--button-text);
     padding: 10px 24px;
     font-size: 0.95rem;
     border: none;
@@ -118,5 +119,31 @@ body,
 }
 
 .view-all-btn:hover {
-    background-color: #2563eb;
+    background-color: var(--button-hover-bg);
+}
+
+.upcoming-events h3 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: var(--heading-color);
+}
+.upcoming-events p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    color: var(--subtext-color);
+}
+.dark .upcoming-events h3 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: var(--hero-heading-color);
+}
+
+.dark .subtext-color2 {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    color: var(--subtext-color2);
 }
