@@ -46,6 +46,8 @@
     --footer-bg: #002f6c;
     --footer-text: #ffffff;
 
+    --subtext-color2: #a9a9a9;
+
     --navlink-active-color: var(--button-text);
     --navlink-active-border: var(--button-text);
 }

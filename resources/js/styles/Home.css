@@ -107,8 +107,8 @@ body,
 }
 
 .view-all-btn {
-    background-color: #3b82f6;
-    color: white;
+    background-color: var(--button-bg);
+    color: var(--button-text);
     padding: 10px 24px;
     font-size: 0.95rem;
     border: none;
@@ -119,5 +119,31 @@ body,
 }
 
 .view-all-btn:hover {
-    background-color: #2563eb;
+    background-color: var(--button-hover-bg);
+}
+
+.upcoming-events h3 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: var(--heading-color);
+}
+.upcoming-events p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    color: var(--subtext-color);
+}
+.dark .upcoming-events h3 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: var(--hero-heading-color);
+}
+
+.dark .subtext-color2 {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    color: var(--subtext-color2);
 }
