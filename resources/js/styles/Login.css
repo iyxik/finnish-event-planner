@@ -120,3 +120,16 @@ body.dark .login-form {
     font-weight: 700;
     color: var(--heading-color);
 }
+.login-message {
+    margin-top: 15px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.login-message.success {
+    color: #28a745;
+}
+
+.login-message.error {
+    color: #dc3545;
+}
