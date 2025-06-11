@@ -39,16 +39,8 @@
         "location": "Espoo",
         "description": "Music, activism, and food from all over the globe-free entry! Join thousands to explore cultures, listen to powerful talks, try global street food, and shop ethical brands.",
         "image_url": null,
-        "id": 3,
-        "weather": {
-            "temp": 16.58,
-            "description": "broken clouds",
-            "icon": "04d",
-            "coord": {
-                "lat": 60.25,
-                "lon": 24.6667
-            }
-        }
+        "id": "3",
+        "weather": null
     },
     {
         "title": "Pori Jazz Festival",
@@ -87,7 +79,7 @@
     {
         "title": "World Wife Carrying Championships",
         "date": "2025-06-24",
-        "location": "Sonkajärvi",
+        "location": "Sonkaj\u00e4rvi",
         "description": "Witness (or join!) the world's most entertaining race: husbands sprinting with their wives on their backs through a muddy obstacle course. The prize? The wife's weight in beer! Fun, bizarre, and unforgettable. This is Finland's humor and heart on full display.",
         "image_url": null,
         "id": 6,
@@ -155,7 +147,7 @@
     {
         "title": "Secto Automotive Rally Finland",
         "date": "2025-06-24",
-        "location": "Jyväskylä",
+        "location": "Jyv\u00e4skyl\u00e4",
         "description": "Known as the Finnish Rally, this World Rally Championship event offers high-speed action and breathtaking landscapes. It's a must-attend for motorsport enthusiasts and adventure seekers.",
         "image_url": null,
         "id": 10,
@@ -170,10 +162,10 @@
         }
     },
     {
-        "title": "Mänttä Art Festival",
+        "title": "M\u00e4ntt\u00e4 Art Festival",
         "date": "2025-06-28",
-        "location": "Mänttä",
-        "description": "As Finland's largest summer exhibition of contemporary art, the Mänttä Art Festival features works from 25 artists or groups, set against the backdrop of a charming small town. It's a haven for art lovers seeking inspiration.",
+        "location": "M\u00e4ntt\u00e4",
+        "description": "As Finland's largest summer exhibition of contemporary art, the M\u00e4ntt\u00e4 Art Festival features works from 25 artists or groups, set against the backdrop of a charming small town. It's a haven for art lovers seeking inspiration.",
         "image_url": null,
         "id": 11,
         "weather": {

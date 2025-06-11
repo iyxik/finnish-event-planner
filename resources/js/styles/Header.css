@@ -59,3 +59,22 @@
     color: var(--navlink-active-color);
     border-bottom: 2px solid var(--navlink-active-border);
 }
+
+.header-right {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.logout-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #c0392b;
+}

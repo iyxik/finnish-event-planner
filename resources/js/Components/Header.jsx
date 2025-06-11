@@ -1,28 +1,75 @@
 import React from "react";
 import "../styles/Header.css";
-import { Link } from "react-router-dom";
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 
-const Header = () => {
-    return (
-        <>
-            <header className="header">
-                <div className="header-left">
-                    {/* <span className="logo-icon">🤍</span> */}
-                    <Link to="/" className="logo-text">
-                        Eventori.fi
-                    </Link>
-                </div>
+const Header = ({ user, onLogout }) => {
+    const handleLogoutClick = () => {
+        onLogout();
+    };
 
-                <div className="header-center">
-                    <NavLink to="/" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Home</NavLink>
-                    <NavLink to="/events" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>All Events</NavLink>
-                    <NavLink to="/events/new" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Add Event</NavLink>
-                    <ThemeToggle/>
-                </div>
-            </header>
-        </>
+    return (
+        <header className="header">
+            <div className="header-left">
+                <Link to="/" className="logo-text">
+                    Eventori.fi
+                </Link>
+            </div>
+
+            <div className="header-center">
+                <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                        isActive ? "nav-link active" : "nav-link"
+                    }
+                >
+                    Home
+                </NavLink>
+                <NavLink
+                    to="/events"
+                    className={({ isActive }) =>
+                        isActive ? "nav-link active" : "nav-link"
+                    }
+                >
+                    All Events
+                </NavLink>
+                <NavLink
+                    to="/events/new"
+                    className={({ isActive }) =>
+                        isActive ? "nav-link active" : "nav-link"
+                    }
+                >
+                    Add Event
+                </NavLink>
+            </div>
+
+            <div className="header-right">
+                {!user ? (
+                    <>
+                        <NavLink to="/register" className="nav-link">
+                            Register
+                        </NavLink>
+                        <NavLink to="/login" className="nav-link">
+                            Login
+                        </NavLink>
+                        <ThemeToggle />
+                    </>
+                ) : (
+                    <>
+                        <span className="welcome-text">
+                            Welcome, {user.name || user.email}!{" "}
+                        </span>
+                        <button
+                            className="logout-button"
+                            onClick={handleLogoutClick}
+                        >
+                            Logout
+                        </button>
+                        <ThemeToggle />
+                    </>
+                )}
+            </div>
+        </header>
     );
 };
 
