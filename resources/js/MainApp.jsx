@@ -16,13 +16,11 @@ function App() {
     const navigate = useNavigate();
 
     const handleLoginSuccess = (userData) => {
-        console.log("Login successful! User data:", userData);
         setUser(userData.user);
         navigate("/");
     };
 
     const handleRegisterSuccess = (userData) => {
-        console.log("Registration successful! User data:", userData);
         setUser(userData.user);
         navigate("/");
     };
@@ -35,7 +33,6 @@ function App() {
             });
             localStorage.removeItem("access_token");
             setUser(null);
-            console.log("Logged out successfully!");
             navigate("/login");
         } catch (error) {
             console.error("Logout failed:", error);
