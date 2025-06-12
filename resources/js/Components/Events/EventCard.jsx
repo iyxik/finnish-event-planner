@@ -1,53 +1,107 @@
-import React from 'react';
+import React from "react";
 import "../../styles/EventCard.css";
+import { Link } from "react-router-dom";
 
-function EventCard({
-    event,
-    editingId,
-    editingData,
-    startEditing,
-    cancelEditing,
-    handleEditInputChange,
-    saveEdit,
-    deleteEvent,
-    setActiveEvent
-}) {
+function EventCard({ event, editingId, editingData, handleEditInputChange }) {
     const isEditing = editingId === event.id;
 
     return (
         <div className="eventCard">
             {isEditing ? (
                 <>
-                    <input type="text" name="title" value={editingData.title} onChange={handleEditInputChange} required />
-                    <input type="date" name="date" value={editingData.date} onChange={handleEditInputChange} required />
-                    <input type="text" name="location" value={editingData.location} onChange={handleEditInputChange} required />
-                    <textarea name="description" value={editingData.description} onChange={handleEditInputChange} required />
-                    <input type="url" name="image_url" value={editingData.image_url} onChange={handleEditInputChange} />
-                    <div className="card-buttons">
-                        <button onClick={() => saveEdit(event.id)}>Save</button>
-                        <button onClick={cancelEditing}>Cancel</button>
-                    </div>
+                    <input
+                        type="text"
+                        name="title"
+                        value={editingData.title}
+                        onChange={handleEditInputChange}
+                        required
+                    />
+                    <input
+                        type="date"
+                        name="date"
+                        value={editingData.date}
+                        onChange={handleEditInputChange}
+                        required
+                    />
+                    <input
+                        type="text"
+                        name="location"
+                        value={editingData.location}
+                        onChange={handleEditInputChange}
+                        required
+                    />
+                    <textarea
+                        name="description"
+                        value={editingData.description}
+                        onChange={handleEditInputChange}
+                        required
+                    />
+                    <input
+                        type="url"
+                        name="image_url"
+                        value={editingData.image_url}
+                        onChange={handleEditInputChange}
+                    />
                 </>
             ) : (
                 <>
-                    <h2>{event.title}</h2>
-                    <p><strong>Date:</strong> {event.date}</p>
-                    <p><strong>Location:</strong> {event.location}</p>
-                    <p>{event.description}</p>
-                    {event.image_url && <img src={event.image_url} alt={event.title} className="event-image" />}
+                    <div className="event-header">
+                        <h2>{event.title}</h2>
                     {event.weather ? (
-                        <div className="weather-info">
-                            <p>Temp: {event.weather.temp} °C</p>
-                            <p>{event.weather.description}</p>
-                            <img src={`http://openweathermap.org/img/wn/${event.weather.icon}@2x.png`} alt={event.weather.description} />
+                        <div className="weather-wrapper">
+                            <img
+                                src={`http://openweathermap.org/img/wn/${event.weather.icon}@4x.png`}
+                                alt={event.weather.description}
+                                className="weather-icon"
+                                tabIndex={0}
+                            />
+                            <div className="weather-popup" role="tooltip">
+                                <p className="temp">{event.weather.temp} °C</p>
+                                <p className="desc">
+                                    {event.weather.description}
+                                </p>
+                                <p className="humidity">
+                                    Humidity: {event.weather.humidity}%
+                                </p>
+                                <p className="wind">
+                                    Wind: {event.weather.wind_speed} m/s
+                                </p>
+                            </div>
                         </div>
                     ) : (
-                        <p>No weather data available</p>
+                        <p className="no-weather">No weather data available</p>
+                    )}
+                    </div>
+
+                    <p>
+                        <strong>📅 Date:</strong> {event.date}
+                    </p>
+                    <p>
+                        <strong>📍 Location:</strong> {event.location}
+                    </p>
+                    <p>{event.description}</p>
+                    {event.image_url && (
+                        <img
+                            src={event.image_url}
+                            alt={event.title}
+                            className="event-image"
+                        />
+                    )}
+
+                    {event.image_url && (
+                        <img
+                            src={event.image_url}
+                            alt={event.title}
+                            className="event-image"
+                        />
                     )}
                     <div className="card-buttons">
-                        <button onClick={() => startEditing(event)}>Edit</button>
-                        <button onClick={() => deleteEvent(event.id)}>Delete</button>
-                        <button onClick={() => setActiveEvent(event)}>Go to Map</button>
+                        <Link
+                            to={`/events/${event.id}`}
+                            className="view-details-link"
+                        >
+                            View Details
+                        </Link>
                     </div>
                 </>
             )}
