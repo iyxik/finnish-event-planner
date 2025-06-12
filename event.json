@@ -22,7 +22,7 @@
         "location": "Korso",
         "description": "Step into a Finnish fairytale with dancing, traditional folk music, and the iconic midsummer bonfire lighting on a beautiful island. Watch couples in national dress perform old folk dances, and enjoy grilled treats under the midnight sun. An unforgettable way to experience Finnish culture.",
         "image_url": null,
-        "id": 2,
+        "id": "2",
         "weather": {
             "temp": 15.6,
             "description": "light rain",
@@ -39,7 +39,7 @@
         "location": "Espoo",
         "description": "Music, activism, and food from all over the globe-free entry! Join thousands to explore cultures, listen to powerful talks, try global street food, and shop ethical brands.",
         "image_url": null,
-        "id": 3,
+        "id": "3",
         "weather": null
     },
     {
@@ -65,7 +65,7 @@
         "location": "Vantaa",
         "description": "Wake up early for a splash-literally! Each year, one \"Sleepyhead\" is tossed into the sea at 7 AM, kicking off a day of festivities, parades, and local markets. It's quirky, charming, and full of small-town joy. Ideal for families and lovers of offbeat traditions.",
         "image_url": null,
-        "id": 5,
+        "id": "5",
         "weather": {
             "temp": 15.92,
             "description": "light rain",
