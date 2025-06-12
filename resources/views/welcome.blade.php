@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <title>Laravel React</title>
     @viteReactRefresh
-    @vite('resources/js/app.jsx')
+    @vite('resources/js/main.jsx')
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body {

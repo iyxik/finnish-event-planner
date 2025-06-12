@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log; // Added for logging API errors
 
 class EventController extends Controller
 {
@@ -22,9 +23,11 @@ class EventController extends Controller
 
         // Fetch and update weather if missing or empty coordinates
         $updated = false;
-        foreach ($events as &$event) {
-            if (empty($event['weather']) || empty($event['weather']['coord'])) {
-                $event['weather'] = $this->getWeatherForLocation($event['location']);
+        foreach ($events as &$event) { // Use & for reference to modify the original array
+            // Ensure 'location' is treated as the city for weather
+            // Also, update if weather is missing or doesn't have coordinates
+            if (!isset($event['weather']) || empty($event['weather']['coord']) || !isset($event['location'])) {
+                $event['weather'] = $this->getWeatherForLocation($event['location'] ?? null); // Use null if location is somehow missing
                 $updated = true;
             }
         }
@@ -42,7 +45,10 @@ class EventController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'date' => 'required|date|after_or_equal:today',
-            'location' => 'required|string|max:255',
+            'time' => 'required|string', // <-- Added/Ensured
+            'category' => 'required|string', // <-- Added/Ensured
+            'location' => 'required|string|max:255', // This is for the City (weather)
+            'address' => 'nullable|string|max:255',   // <-- NEW: Validation for Full Address
             'description' => 'required|string',
             'image_url' => 'nullable|url',
         ]);
@@ -53,8 +59,10 @@ class EventController extends Controller
 
         $events = $this->readEvents();
 
-        $newEvent = $request->all();
+        $newEvent = $request->all(); // This will automatically pick up 'address' and other fields if sent by frontend
         $newEvent['id'] = $this->generateId($events);
+
+        // Weather is fetched based on the 'location' field (which should be the city)
         $newEvent['weather'] = $this->getWeatherForLocation($newEvent['location']);
 
         $events[] = $newEvent;
@@ -82,7 +90,10 @@ class EventController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'date' => 'required|date|after_or_equal:today',
-            'location' => 'required|string|max:255',
+            'time' => 'required|string', // <-- Added/Ensured
+            'category' => 'required|string', // <-- Added/Ensured
+            'location' => 'required|string|max:255', // This is for the City (weather)
+            'address' => 'nullable|string|max:255',   // <-- NEW: Validation for Full Address
             'description' => 'required|string',
             'image_url' => 'nullable|url',
         ]);
@@ -96,17 +107,24 @@ class EventController extends Controller
         $found = false;
         foreach ($events as &$event) { // Use & for reference to modify the original array
             if ($event['id'] == $id) {
-                $originalLocation = $event['location']; // Store original location for comparison
+                // Store original city for comparison, handle if not set
+                $originalLocation = $event['location'] ?? null;
 
                 // Merge incoming data with existing event data.
                 // This ensures fields not sent from the frontend (like original weather) are retained.
+                // It will now also correctly merge the 'address' field if sent.
                 $event = array_merge($event, $request->all());
 
                 // Condition to re-fetch weather:
-                // 1. If the 'location' field has changed.
+                // 1. If the 'location' (city) field has changed.
                 // 2. Or, if the event currently has no weather data or invalid coordinates.
-                if ($event['location'] !== $originalLocation || empty($event['weather']) || empty($event['weather']['coord'])) {
-                    $newWeather = $this->getWeatherForLocation($event['location']);
+                if (
+                    ($event['location'] !== $originalLocation) ||
+                    empty($event['weather']) ||
+                    empty($event['weather']['coord'])
+                ) {
+                    // Pass null if location is empty to getWeatherForLocation
+                    $newWeather = $this->getWeatherForLocation($event['location'] ?? null);
                     // Only update weather if a successful response was received
                     if ($newWeather !== null) {
                         $event['weather'] = $newWeather;
@@ -176,7 +194,19 @@ class EventController extends Controller
 
     protected function getWeatherForLocation($location)
     {
+        // Handle cases where location might be null or empty string
+        if (empty($location)) {
+            Log::info('Skipping weather fetch: Location is empty.');
+            return null;
+        }
+
         $apiKey = config('services.openweather.key');
+
+        // Check if API key is configured
+        if (empty($apiKey)) {
+            Log::error('OpenWeatherMap API key is not configured in services.openweather.key');
+            return null;
+        }
 
         $response = Http::get("https://api.openweathermap.org/data/2.5/weather", [
             'q' => $location,
@@ -196,6 +226,12 @@ class EventController extends Controller
                 ],
             ];
         }
+
+        // Log the error response if not successful for debugging
+        Log::error('OpenWeatherMap API request failed for location: ' . $location, [
+            'status' => $response->status(),
+            'body' => $response->body()
+        ]);
 
         return null;
     }

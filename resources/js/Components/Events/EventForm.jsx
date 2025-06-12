@@ -68,10 +68,11 @@ function EventForm({ eventData, handleInputChange, handleSubmit }) {
                     </label>
                 </div>
 
+                {/* --- City for Weather Data --- */}
                 <div className="form-group">
                     <input
                         type="text"
-                        name="location"
+                        name="location" // This remains 'location' for weather data
                         placeholder=" "
                         value={eventData.location || ""}
                         onChange={handleInputChange}
@@ -79,53 +80,79 @@ function EventForm({ eventData, handleInputChange, handleSubmit }) {
                     />
                     <label>
                         <FiMapPin style={{ marginRight: "8px" }} />
-                        Location
+                        City (for Weather Data)
+                    </label>
+                </div>
+
+                {/* --- NEW: Full Address Field --- */}
+                <div className="form-group">
+                    <input
+                        type="text"
+                        name="address" // This is the new 'address' field
+                        placeholder=" "
+                        value={eventData.address || ""} // Ensure it's never undefined
+                        onChange={handleInputChange}
+                    />
+                    <label>
+                        <FiMapPin style={{ marginRight: "8px" }} />
+                        Full Address (Optional)
                     </label>
                 </div>
 
                 {/* Updated Category Dropdown */}
                 <div className="form-group">
-  <select
-    name="category"
-    value={eventData.category || ""}
-    onChange={handleInputChange}
-    required
-    style={{
-      width: "100%",
-      height: "48px",
-      fontSize: "1rem",
-      padding: "8px 12px",
-      borderRadius: "4px",
-      border: "1px solid #ccc",
-      boxSizing: "border-box",
-      backgroundColor: "#fff",
-      color: eventData.category ? "#000" : "#888", // make placeholder appear grayed out
-    }}
-  >
-    <option value="" disabled>
-      Select Category
-    </option>
-    <option value="Social">Social</option>
-    <option value="Educational">Educational</option>
-    <option value="Corporate/Business">Corporate/Business</option>
-    <option value="Entertainment">Entertainment</option>
-    <option value="Sports & Fitness">Sports & Fitness</option>
-    <option value="Lifestyle & Hobby">Lifestyle & Hobby</option>
-    <option value="Political & Civic">Political & Civic</option>
-    <option value="Religious & Spiritual">Religious & Spiritual</option>
-    <option value="Community & Charity">Community & Charity</option>
-    <option value="Virtual & Hybrid">Virtual & Hybrid</option>
-    <option value="Tech">Tech</option>
-    <option value="Other">Other</option>
-  </select>
-  <label>
-    <FiTag style={{ marginRight: "8px" }} />
-    Category
-  </label>
-</div>
-
-
-
+                    <select
+                        name="category"
+                        value={eventData.category || ""}
+                        onChange={handleInputChange}
+                        required
+                        style={{
+                            width: "100%",
+                            height: "48px",
+                            fontSize: "1rem",
+                            padding: "8px 12px",
+                            borderRadius: "4px",
+                            border: "1px solid #ccc",
+                            boxSizing: "border-box",
+                            backgroundColor: "#fff",
+                            color: eventData.category ? "#000" : "#888", // make placeholder appear grayed out
+                        }}
+                    >
+                        <option value="" disabled>
+                            Select Category
+                        </option>
+                        <option value="Social">Social</option>
+                        <option value="Educational">Educational</option>
+                        <option value="Corporate/Business">
+                            Corporate/Business
+                        </option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Sports & Fitness">
+                            Sports & Fitness
+                        </option>
+                        <option value="Lifestyle & Hobby">
+                            Lifestyle & Hobby
+                        </option>
+                        <option value="Political & Civic">
+                            Political & Civic
+                        </option>
+                        <option value="Religious & Spiritual">
+                            Religious & Spiritual
+                        </option>
+                        <option value="Community & Charity">
+                            Community & Charity
+                        </option>
+                        <option value="Virtual & Hybrid">
+                            Virtual & Hybrid
+                        </option>
+                        <option value="Tech">Tech</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <label>
+                        <FiTag style={{ marginRight: "8px" }} />
+                        Category
+                    </label>
+                </div>
 
                 <div className="form-group">
                     <input

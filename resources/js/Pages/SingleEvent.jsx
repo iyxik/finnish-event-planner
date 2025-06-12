@@ -4,7 +4,6 @@ import "../styles/SingleEvent.css";
 
 const SingleEvent = ({ user }) => {
     const { id } = useParams();
-
     const navigate = useNavigate();
 
     const [event, setEvent] = useState(null);
@@ -78,6 +77,12 @@ const SingleEvent = ({ user }) => {
         year: "numeric",
     });
 
+    // Determine the location string for the map
+    // Prefer full address if available, otherwise use city (event.location)
+    const mapLocation = event.address ? event.address : event.location;
+    // URL-encode the location string for the Google Maps iframe
+    const encodedMapLocation = encodeURIComponent(mapLocation);
+
     return (
         <main className="event-detail-container">
             <section className="main-content">
@@ -92,8 +97,20 @@ const SingleEvent = ({ user }) => {
                 )}
 
                 <div className="event-canvas">
-                    <p>📍 {event.location}</p>
-                    <p>📅 {formattedDate}</p>
+                    {/* Display both city and full address if available */}
+                    <p>
+                        📍 **City:** {event.location}
+                        {event.address && (
+                            <>
+                                <br />
+                                🗺️ **Address:** {event.address}
+                            </>
+                        )}
+                    </p>
+                    <p>
+                        📅 {formattedDate} at {event.time}
+                    </p>
+                    <p>🏷️ Category: {event.category}</p>
                 </div>
 
                 <div className="event-canvas">
@@ -102,14 +119,19 @@ const SingleEvent = ({ user }) => {
 
                 <p className="weather-heading">Weather Forecast</p>
                 <div className="event-canvas">
-                    {event.weather && isFutureOrRecent(event.date) ? (
+                    {event.weather &&
+                    event.weather.temp !== null &&
+                    isFutureOrRecent(event.date) ? (
                         <p>
                             <img
                                 src={`https://openweathermap.org/img/wn/${event.weather.icon}@2x.png`}
                                 alt={event.weather.description}
                                 width="50"
                                 height="50"
-                                style={{ verticalAlign: "middle", marginRight: "8px" }}
+                                style={{
+                                    verticalAlign: "middle",
+                                    marginRight: "8px",
+                                }}
                             />
                             {event.weather.description}, {event.weather.temp}°C
                         </p>
@@ -120,15 +142,19 @@ const SingleEvent = ({ user }) => {
             </section>
 
             <aside className="sidebar">
-                <iframe
-                    title="map"
-                    width="100%"
-                    height="250"
-                    loading="lazy"
-                    allowFullScreen
-                    src={`https://maps.google.com/maps?q=${encodeURIComponent(event.location)}&output=embed`}
-                    style={{ borderRadius: "8px" }}
-                ></iframe>
+                {/* Use the full address for the map if available */}
+                {mapLocation && ( // Only render map if there's a location to map
+                    <iframe
+                        title="map"
+                        width="100%"
+                        height="250"
+                        loading="lazy"
+                        allowFullScreen
+                        // Corrected Google Maps embed URL
+                        src={`https://maps.google.com/maps?q=${encodedMapLocation}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                        style={{ borderRadius: "8px" }}
+                    ></iframe>
+                )}
 
                 {/* Show buttons only if user is logged in */}
                 {user && (
@@ -136,7 +162,10 @@ const SingleEvent = ({ user }) => {
                         <button className="edit-button" onClick={handleEdit}>
                             Edit
                         </button>
-                        <button className="delete-button" onClick={handleDelete}>
+                        <button
+                            className="delete-button"
+                            onClick={handleDelete}
+                        >
                             Delete
                         </button>
                     </div>

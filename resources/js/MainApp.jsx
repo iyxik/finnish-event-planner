@@ -11,7 +11,7 @@ import Login from "./Components/Login";
 
 import "./styles/MainApp.css";
 
-function App() {
+function MainApp() {
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
 
@@ -52,9 +52,18 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home user={user} />} />
                     <Route path="/events" element={<EventListPage />} />
-                    <Route path="/events/new" element={<FormPage user={user} />} />
-                    <Route path="/events/:id" element={<SingleEvent user={user} />} />
-                    <Route path="/events/:id/edit" element={<FormPage user={user} />} />
+                    <Route
+                        path="/events/new"
+                        element={<FormPage user={user} />}
+                    />
+                    <Route
+                        path="/events/:id"
+                        element={<SingleEvent user={user} />}
+                    />
+                    <Route
+                        path="/events/:id/edit"
+                        element={<FormPage user={user} />}
+                    />
                     <Route
                         path="/register"
                         element={
@@ -82,4 +91,4 @@ function App() {
     );
 }
 
-export default App;
+export default MainApp;

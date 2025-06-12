@@ -187,41 +187,23 @@
         }
     },
     {
-        "title": "kjndkkdj<EEEE",
+        "title": "Project Presentation",
         "date": "2025-06-13",
-        "location": "espoo",
-        "description": "nknklnlk",
-        "image_url": null,
-        "id": "12",
-        "weather": null
-    },
-    {
-        "title": "IMGGGGG",
-        "date": "2025-06-13",
-        "location": "espoo",
-        "description": "jkbkkjkjfs",
-        "image_url": "https:\/\/plus.unsplash.com\/premium_photo-1749666992906-f059c7d88139?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "id": 13,
-        "weather": null
-    },
-    {
-        "title": "fff",
-        "date": "2025-06-13",
-        "location": "fff",
-        "description": "ffff",
-        "image_url": null,
+        "time": "12:00",
+        "location": "Helsinki",
+        "category": "Educational",
+        "description": "Good times, we are presenting our amazing Event Planner App, \nsuch fun to make this happen, can't wait to go for holiday",
+        "image_url": "https:\/\/encrypted-tbn0.gstatic.com\/images?q=tbn:ANd9GcRY_Vq02DaBetr2tbgOUBcDS4Wx7DKQjpFhDw&s",
+        "address": "rautatiel\u00e4isenkatu 5",
         "id": 14,
-        "weather": null
-    },
-    {
-        "title": "Time and Cat add",
-        "date": "2025-06-14",
-        "time": "03:04",
-        "location": "espoo",
-        "category": "Corporate\/Business",
-        "description": "kjndskndskjds",
-        "image_url": null,
-        "id": 15,
-        "weather": null
+        "weather": {
+            "temp": 16.17,
+            "description": "light rain",
+            "icon": "10d",
+            "coord": {
+                "lat": 60.1695,
+                "lon": 24.9355
+            }
+        }
     }
 ]
