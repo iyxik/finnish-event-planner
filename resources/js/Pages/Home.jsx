@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import EventCard from "../Components/Events/EventCard";
-
 import { NavLink } from "react-router-dom";
 import "../styles/Home.css";
+import "../styles/EventCard.css";
 
 function Home() {
     const [events, setEvents] = useState([]);
@@ -10,7 +10,12 @@ function Home() {
     useEffect(() => {
         fetch("/api/events")
             .then((res) => res.json())
-            .then((data) => setEvents(data.slice(0, 3)));
+            .then((data) => {
+                const sorted = data.sort(
+                    (a, b) => new Date(a.date) - new Date(b.date)
+                );
+                setEvents(sorted.slice(0, 3));
+            });
     }, []);
 
     return (
@@ -49,7 +54,7 @@ function Home() {
                 </div>
                 <div className="view-all">
                     <NavLink to="/events" className="view-all-btn">
-                        View All
+                        View All Events
                     </NavLink>
                 </div>
             </section>
