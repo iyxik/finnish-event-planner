@@ -1,0 +1,11 @@
+.filter-sort {
+    display: flex;
+    justify-content: space-between;
+}
+label {
+    padding: 0rem 1rem;
+}
+input,
+select {
+    margin: 0 5px;
+}
