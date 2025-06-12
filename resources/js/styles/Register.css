@@ -139,21 +139,25 @@
 }
 
 .logout-button {
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    padding: 8px 14px;
-    font-size: 0.95rem;
+    background: linear-gradient(90deg, #4f46e5 0%, #2e66c0 100%);
+    color: white;
+    padding: 0.6rem 1.8rem;
     border: none;
-    border-radius: 6px;
-    text-decoration: none;
+    border-radius: 9999px;
     font-weight: 600;
-    transition: background-color 0.2s;
+    font-size: 0.75rem;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgb(59 130 246 / 0.4);
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    letter-spacing: 0.02em;
+    display: inline-block;
     cursor: pointer;
-    margin-right: 1rem;
 }
 
 .logout-button:hover {
-    background-color: var(--button-hover-bg);
+    background: linear-gradient(90deg, #4338ca 0%, #2563eb 100%);
+    box-shadow: 0 8px 15px rgb(37 99 235 / 0.5);
+    transform: translateY(-2px);
 }
 
 .logged-in-message .home-link {
@@ -205,13 +209,11 @@ body.dark .register-message.error {
 }
 
 .dark .logout-button {
-    color: #205aa6;
-    background-color: #e2e8f0;
+    color: #ffffff;
 }
 
 .dark .logout-button:hover {
-    color: #205aa6;
-    background-color: #e2e8f0;
+    color: #ffffff;
 }
 
 @media (max-width: 768px) {
