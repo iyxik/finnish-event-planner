@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/SingleEvent.css";
 
-const SingleEvent = () => {
-    const { id } = useParams(); // ID is correctly received here
+const SingleEvent = ({ user }) => {
+    const { id } = useParams();
 
     const navigate = useNavigate();
 
@@ -13,19 +13,14 @@ const SingleEvent = () => {
     useEffect(() => {
         const fetchEvent = async () => {
             try {
-                // *** CORRECTED FETCH CALL ***
-                // Now, you fetch directly from the single event API endpoint
                 const response = await fetch(`/api/events/${id}`);
 
                 if (response.ok) {
-                    const eventData = await response.json(); // This will be the single event object
-                    setEvent(eventData); // Set the received single event
+                    const eventData = await response.json();
+                    setEvent(eventData);
                 } else if (response.status === 404) {
-                    // Explicitly handle 404 Not Found from the backend
-                    setEvent(null); // Set event to null to trigger "Event not found." message
-                    console.warn(
-                        `Event with ID ${id} not found on the server.`
-                    );
+                    setEvent(null);
+                    console.warn(`Event with ID ${id} not found.`);
                 } else {
                     console.error(
                         "Failed to fetch event details:",
@@ -41,9 +36,7 @@ const SingleEvent = () => {
         };
 
         fetchEvent();
-    }, [id]); // Re-run effect if ID changes
-
-    // ... (rest of your component code remains the same)
+    }, [id]);
 
     const isFutureOrRecent = (dateStr) => {
         const eventDate = new Date(dateStr);
@@ -76,7 +69,7 @@ const SingleEvent = () => {
     };
 
     if (loading) return <p>Loading event details...</p>;
-    if (!event) return <p>Event not found.</p>; // This will now correctly trigger for 404s
+    if (!event) return <p>Event not found.</p>;
 
     const date = new Date(event.date);
     const formattedDate = date.toLocaleDateString("en-GB", {
@@ -116,10 +109,7 @@ const SingleEvent = () => {
                                 alt={event.weather.description}
                                 width="50"
                                 height="50"
-                                style={{
-                                    verticalAlign: "middle",
-                                    marginRight: "8px",
-                                }}
+                                style={{ verticalAlign: "middle", marginRight: "8px" }}
                             />
                             {event.weather.description}, {event.weather.temp}°C
                         </p>
@@ -136,21 +126,21 @@ const SingleEvent = () => {
                     height="250"
                     loading="lazy"
                     allowFullScreen
-                    // Corrected map URL - ensure `event.location` is properly encoded for Google Maps static or embed
-                    src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                        event.location
-                    )}&output=embed`}
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(event.location)}&output=embed`}
                     style={{ borderRadius: "8px" }}
                 ></iframe>
 
-                <div className="event-actions">
-                    <button className="edit-button" onClick={handleEdit}>
-                        Edit
-                    </button>
-                    <button className="delete-button" onClick={handleDelete}>
-                        Delete
-                    </button>
-                </div>
+                {/* Show buttons only if user is logged in */}
+                {user && (
+                    <div className="event-actions">
+                        <button className="edit-button" onClick={handleEdit}>
+                            Edit
+                        </button>
+                        <button className="delete-button" onClick={handleDelete}>
+                            Delete
+                        </button>
+                    </div>
+                )}
             </aside>
         </main>
     );

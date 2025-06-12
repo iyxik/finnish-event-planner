@@ -35,14 +35,17 @@ const Header = ({ user, onLogout }) => {
                     >
                         All Events
                     </NavLink>
-                    <NavLink
-                        to="/events/new"
-                        className={({ isActive }) =>
-                            isActive ? "nav-link active" : "nav-link"
-                        }
-                    >
-                        Add Event
-                    </NavLink>
+                    {/* Only show Add Event if user is logged in */}
+                    {user && (
+                        <NavLink
+                            to="/events/new"
+                            className={({ isActive }) =>
+                                isActive ? "nav-link active" : "nav-link"
+                            }
+                        >
+                            Add Event
+                        </NavLink>
+                    )}
                 </div>
             </div>
 

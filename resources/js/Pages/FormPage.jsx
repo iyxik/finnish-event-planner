@@ -1,64 +1,64 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // Import useParams and useNavigate
+import { useParams, useNavigate } from "react-router-dom";
 import EventForm from "../Components/Events/EventForm";
 import "../styles/FormPage.css";
 
-const FormPage = () => {
-    const { id } = useParams(); // Get the 'id' parameter from the URL
-    const navigate = useNavigate(); // Hook for navigation
-    const backendUrl = import.meta.env.VITE_APP_BACKEND_URL; // Your backend URL
+const FormPage = ({ user }) => {
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const backendUrl = import.meta.env.VITE_APP_BACKEND_URL;
 
-    // State to hold the event data for the form
-    // This will be initialized to empty for new events,
-    // or populated with existing data for editing.
     const [eventData, setEventData] = useState({
         title: "",
         date: "",
+        time: "",
         location: "",
+        category: "",
         description: "",
         image_url: "",
     });
 
-    // State to track if we are in editing mode
     const [isEditing, setIsEditing] = useState(false);
 
-    // useEffect to fetch event data if 'id' is present (i.e., we are in edit mode)
+    // 🚫 Redirect to login if not authenticated
+    useEffect(() => {
+        if (!user) {
+            navigate("/login");
+        }
+    }, [user, navigate]);
+
+    // Fetch event for editing
     useEffect(() => {
         if (id) {
-            // If an ID exists in the URL, we're in edit mode
             setIsEditing(true);
             fetchEventForEdit(id);
         } else {
-            // No ID, so we're adding a new event
             setIsEditing(false);
-            // Reset form for new event creation
             setEventData({
                 title: "",
                 date: "",
+                time: "",
                 location: "",
+                category: "",
                 description: "",
                 image_url: "",
             });
         }
-    }, [id]); // Rerun this effect whenever the 'id' in the URL changes
+    }, [id]);
 
-    // Function to fetch existing event data for editing
     const fetchEventForEdit = async (eventId) => {
         try {
             const res = await fetch(`${backendUrl}/api/events/${eventId}`);
-            if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-            }
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
             const data = await res.json();
-            setEventData(data); // Populate form with fetched data
+            setEventData(data);
         } catch (error) {
             console.error("Error fetching event for edit:", error);
             alert("Failed to load event for editing. Please try again.");
-            navigate("/events"); // Redirect if event not found or error
+            navigate("/events");
         }
     };
 
-    // Handler for all input changes
     const handleInputChange = (e) => {
         setEventData((prev) => ({
             ...prev,
@@ -66,11 +66,8 @@ const FormPage = () => {
         }));
     };
 
-    // Handler for form submission (will now handle both POST and PUT)
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // Determine API URL and HTTP method based on whether we are editing or adding
         const url = isEditing
             ? `${backendUrl}/api/events/${id}`
             : `${backendUrl}/api/events`;
@@ -78,29 +75,19 @@ const FormPage = () => {
 
         try {
             const res = await fetch(url, {
-                method: method,
+                method,
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(eventData),
-                credentials: "include", // Important for sending cookies/CSRF token
+                credentials: "include",
             });
 
             if (res.ok) {
-                alert(
-                    `Event ${isEditing ? "updated" : "created"} successfully!`
-                );
-                navigate("/events"); // Redirect to the event list page after success
+                alert(`Event ${isEditing ? "updated" : "created"} successfully!`);
+                navigate("/events");
             } else {
                 const errorText = await res.text();
-                console.error(
-                    `Failed to ${isEditing ? "update" : "create"} event:`,
-                    res.status,
-                    errorText
-                );
-                alert(
-                    `Failed to ${
-                        isEditing ? "update" : "create"
-                    } event. Please check console for details.`
-                );
+                console.error(`Failed to submit event:`, res.status, errorText);
+                alert(`Failed to ${isEditing ? "update" : "create"} event.`);
             }
         } catch (error) {
             console.error("Network or submission error:", error);
@@ -108,15 +95,17 @@ const FormPage = () => {
         }
     };
 
+    if (!user) return null; // Avoid rendering the form until redirect happens
+
     return (
         <div className="form-background">
             <h1 className="form-title">
                 {isEditing ? "Edit Event" : "Add New Event"}
             </h1>
             <EventForm
-                eventData={eventData} // Pass the eventData state
-                handleInputChange={handleInputChange} // Pass the generic input handler
-                handleSubmit={handleSubmit} // Pass the generic submit handler
+                eventData={eventData}
+                handleInputChange={handleInputChange}
+                handleSubmit={handleSubmit}
             />
         </div>
     );
