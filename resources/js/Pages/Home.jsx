@@ -54,7 +54,7 @@ function Home() {
                 </div>
                 <div className="view-all">
                     <NavLink to="/events" className="view-all-btn">
-                        View All
+                        View All Events
                     </NavLink>
                 </div>
             </section>
