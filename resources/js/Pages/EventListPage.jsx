@@ -8,8 +8,6 @@ const EventListPage = () => {
     const [sortOrder, setSortOrder] = useState("asc");
     const [editingId, setEditingId] = useState(null);
     const [editingData, setEditingData] = useState({});
-    // NEW STATE: To hold the original full event data when editing starts
-    const [originalEventData, setOriginalEventData] = useState(null);
     const [filterDate, setFilterDate] = useState("");
 
     useEffect(() => {
@@ -57,22 +55,11 @@ const EventListPage = () => {
                     editingData={editingData}
                     startEditing={(event) => {
                         setEditingId(event.id);
-                        setEditingData({
-                            // Initialize editingData with editable fields
-                            title: event.title,
-                            description: event.description,
-                            date: event.date,
-                            location: event.location,
-                            image_url: event.image_url,
-                        });
-                        // IMPORTANT: Store the complete original event data here
-                        setOriginalEventData(event);
+                        setEditingData({ ...event });
                     }}
                     cancelEditing={() => {
                         setEditingId(null);
                         setEditingData({});
-                        // Clear original event data on cancel
-                        setOriginalEventData(null);
                     }}
                     handleEditInputChange={(e) =>
                         setEditingData((prev) => ({
@@ -81,35 +68,15 @@ const EventListPage = () => {
                         }))
                     }
                     saveEdit={async (id) => {
-                        // MERGE ORIGINAL DATA WITH EDITED DATA BEFORE SENDING
-                        const dataToSend = {
-                            ...originalEventData, // Start with the full original event data (includes weather)
-                            ...editingData, // Overwrite with changes from the form
-                        };
-
                         const res = await fetch(`/api/events/${id}`, {
                             method: "PUT",
-                            headers: {
-                                "Content-Type": "application/json",
-                                Accept: "application/json", // Good practice to explicitly ask for JSON
-                            },
-                            body: JSON.stringify(dataToSend), // Send the merged data
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(editingData),
                             credentials: "include",
                         });
                         if (res.ok) {
                             setEditingId(null);
-                            setEditingData({});
-                            setOriginalEventData(null); // Clear original event data after successful save
-                            await fetchEvents(); // Re-fetch all events to get the updated list
-                        } else {
-                            console.error(
-                                "Failed to save edit:",
-                                res.status,
-                                await res.text()
-                            );
-                            alert(
-                                "Failed to save event. Please check console for details."
-                            );
+                            await fetchEvents();
                         }
                     }}
                     deleteEvent={async (id) => {
