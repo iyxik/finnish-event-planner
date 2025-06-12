@@ -138,21 +138,22 @@
     color: var(--subtext-color);
 }
 
-.logged-in-message .logout-button {
-    padding: 1rem 2rem;
-    background-color: #dc3545;
-    color: white;
+.logout-button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    padding: 8px 14px;
+    font-size: 0.95rem;
     border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 1rem;
+    border-radius: 6px;
+    text-decoration: none;
     font-weight: 600;
+    transition: background-color 0.2s;
+    cursor: pointer;
     margin-right: 1rem;
-    transition: background-color 0.3s ease;
 }
 
-.logged-in-message .logout-button:hover {
-    background-color: #c82333;
+.logout-button:hover {
+    background-color: var(--button-hover-bg);
 }
 
 .logged-in-message .home-link {
@@ -203,12 +204,14 @@ body.dark .register-message.error {
     color: #ff6b6b;
 }
 
-body.dark .logged-in-message .logout-button {
-    background-color: #bb2d3b;
+.dark .logout-button {
+    color: #205aa6;
+    background-color: #e2e8f0;
 }
 
-body.dark .logged-in-message .logout-button:hover {
-    background-color: #a71d2a;
+.dark .logout-button:hover {
+    color: #205aa6;
+    background-color: #e2e8f0;
 }
 
 @media (max-width: 768px) {
