@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/EventCard.css";
-import { Link } from "react-router-dom";
 
 function EventCard({ event, editingId, editingData, handleEditInputChange }) {
     const isEditing = editingId === event.id;
@@ -89,12 +88,6 @@ function EventCard({ event, editingId, editingData, handleEditInputChange }) {
                         />
                     )}
                     <div className="card-buttons">
-                        <Link
-                            to={`/events/${event.id}`}
-                            className="view-details-link"
-                        >
-                            View Details
-                        </Link>
                         <Link
                             to={`/events/${event.id}`}
                             className="view-details-link"
