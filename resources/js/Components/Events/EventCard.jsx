@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "../../styles/EventCard.css";
 
 function EventCard({
@@ -31,8 +32,8 @@ function EventCard({
             ) : (
                 <>
                     <h2>{event.title}</h2>
-                    <p><strong>Date:</strong> {event.date}</p>
-                    <p><strong>Location:</strong> {event.location}</p>
+                    <p><strong>📅 Date:</strong> {event.date}</p>
+                    <p><strong>📍 Location:</strong> {event.location}</p>
                     <p>{event.description}</p>
                     {event.image_url && <img src={event.image_url} alt={event.title} className="event-image" />}
                     {event.weather ? (
@@ -45,6 +46,7 @@ function EventCard({
                         <p>No weather data available</p>
                     )}
                     <div className="card-buttons">
+                        <Link to={`/events/${event.id}`} className="view-details-link">View Details</Link>
                         <button onClick={() => startEditing(event)}>Edit</button>
                         <button onClick={() => deleteEvent(event.id)}>Delete</button>
                         <button onClick={() => setActiveEvent(event)}>Go to Map</button>

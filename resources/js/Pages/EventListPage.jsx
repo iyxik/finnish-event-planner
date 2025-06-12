@@ -31,6 +31,7 @@ const EventListPage = () => {
     const activePosition = activeEvent?.weather?.coord
         ? [activeEvent.weather.coord.lat, activeEvent.weather.coord.lon]
         : null;
+
     return (
         <>
             <div className="event-list-page">
@@ -76,17 +77,17 @@ const EventListPage = () => {
                                 method: "DELETE",
                                 credentials: "include",
                             });
-                            if (res.ok) fetchEvents();
-                        } else {
-                            // Add some error logging for debugging
-                            console.error(
-                                "Failed to delete event:",
-                                res.status,
-                                await res.text()
-                            );
-                            alert(
-                                "Failed to delete event. Please check console for details."
-                            );
+
+                            if (res.ok) {
+                                fetchEvents();
+                            } else {
+                                console.error(
+                                    "Failed to delete event:",
+                                    res.status,
+                                    await res.text()
+                                );
+                                alert("Failed to delete event. Please check console for details.");
+                            }
                         }
                     }}
                     setActiveEvent={setActiveEvent}

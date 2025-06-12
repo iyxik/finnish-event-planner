@@ -63,6 +63,19 @@ class EventController extends Controller
         return response()->json($newEvent, 201);
     }
 
+    public function show($id)
+    {
+        $events = $this->readEvents();
+
+        foreach ($events as $event) {
+            if ($event['id'] == $id) {
+                return response()->json($event);
+            }
+        }
+
+        return response()->json(['message' => 'Event not found'], 404);
+    }
+
     // Update an existing event
     public function update(Request $request, $id)
     {
