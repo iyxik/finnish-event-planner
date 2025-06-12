@@ -87,14 +87,6 @@ function EventCard({ event, editingId, editingData, handleEditInputChange }) {
                             className="event-image"
                         />
                     )}
-
-                    {event.image_url && (
-                        <img
-                            src={event.image_url}
-                            alt={event.title}
-                            className="event-image"
-                        />
-                    )}
                     <div className="card-buttons">
                         <Link
                             to={`/events/${event.id}`}
