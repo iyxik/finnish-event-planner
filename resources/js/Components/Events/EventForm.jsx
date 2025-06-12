@@ -1,76 +1,96 @@
-import React from 'react';
-import { FiCalendar, FiMapPin, FiLink, FiPlus} from 'react-icons/fi';
+import React from "react";
+import { FiCalendar, FiMapPin, FiLink, FiPlus } from "react-icons/fi";
 import { MdEvent } from "react-icons/md";
 import { BiCommentDetail } from "react-icons/bi";
 
-function EventForm({ newEventData, handleNewInputChange, handleNewEventSubmit }) {
+// Update prop names to be generic for both add and edit
+function EventForm({ eventData, handleInputChange, handleSubmit }) {
     return (
         <div className="event-form-page">
-            <h1>Add New Event</h1>
             <p>Fill the form below to create a new event</p>
-            
-            <form onSubmit={handleNewEventSubmit} className="event-form">
+
+            <form onSubmit={handleSubmit} className="event-form">
                 <div className="form-group">
-                    <input 
-                        type="text" 
-                        name="title" 
+                    <input
+                        type="text"
+                        name="title"
                         placeholder=" "
-                        value={newEventData.title} 
-                        onChange={handleNewInputChange} 
-                        required 
+                        // Ensure value is always a string
+                        value={eventData.title || ""}
+                        onChange={handleInputChange}
+                        required
                     />
-                    <label><MdEvent style={{ marginRight: '6px' }}/>Event Title</label>
+                    <label>
+                        <MdEvent style={{ marginRight: "6px" }} />
+                        Event Title
+                    </label>
                 </div>
 
                 <div className="form-group">
-                    <textarea 
-                        name="description" 
+                    <textarea
+                        name="description"
                         placeholder=" "
-                        value={newEventData.description} 
-                        onChange={handleNewInputChange} 
-                        required 
+                        // Ensure value is always a string
+                        value={eventData.description || ""}
+                        onChange={handleInputChange}
+                        required
                     />
-                    <label><BiCommentDetail style={{ marginRight: '6px' }} />Description</label>
+                    <label>
+                        <BiCommentDetail style={{ marginRight: "6px" }} />
+                        Description
+                    </label>
                 </div>
 
                 <div className="form-group">
-                    <input 
-                        type="date" 
-                        name="date" 
+                    <input
+                        type="date"
+                        name="date"
                         placeholder=" "
-                        value={newEventData.date} 
-                        onChange={handleNewInputChange} 
-                        required 
+                        // Ensure value is always a string
+                        value={eventData.date || ""}
+                        onChange={handleInputChange}
+                        required
                     />
-                    <label><FiCalendar style={{ marginRight: '8px' }} />Event Date</label>
+                    <label>
+                        <FiCalendar style={{ marginRight: "8px" }} />
+                        Event Date
+                    </label>
                 </div>
 
                 <div className="form-group">
-                    <input 
-                        type="text" 
-                        name="location" 
+                    <input
+                        type="text"
+                        name="location"
                         placeholder=" "
-                        value={newEventData.location} 
-                        onChange={handleNewInputChange} 
-                        required 
+                        // Ensure value is always a string
+                        value={eventData.location || ""}
+                        onChange={handleInputChange}
+                        required
                     />
-                    <label><FiMapPin style={{ marginRight: '8px' }} />Location</label>
+                    <label>
+                        <FiMapPin style={{ marginRight: "8px" }} />
+                        Location
+                    </label>
                 </div>
 
                 <div className="form-group">
-                    <input 
-                        type="url" 
-                        name="image_url" 
+                    <input
+                        type="url"
+                        name="image_url"
                         placeholder=" "
-                        value={newEventData.image_url} 
-                        onChange={handleNewInputChange} 
+                        // THIS IS THE MOST LIKELY CULPRIT! Ensure value is always a string.
+                        value={eventData.image_url || ""}
+                        onChange={handleInputChange}
                     />
-                    <label><FiLink style={{ marginRight: '8px' }} />Image URL (optional)</label>
+                    <label>
+                        <FiLink style={{ marginRight: "8px" }} />
+                        Image URL (optional)
+                    </label>
                 </div>
 
                 <button type="submit">
                     <FiPlus />
-                    Create Event
+                    Save Event
                 </button>
             </form>
         </div>

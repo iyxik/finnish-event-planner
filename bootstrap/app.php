@@ -21,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->validateCsrfTokens(except: [
             'register', // Exclude the /register route from CSRF checks
             'login',    // Exclude the /login route from CSRF checks
+            'api/events', //excluding event api routes from CSRF checks
             'api/events/*', //excluding event api routes from CSRF checks
             'api/events',
             'logout',       //excluding logout too from CSRF checks

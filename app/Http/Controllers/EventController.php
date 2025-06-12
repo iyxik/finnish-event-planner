@@ -20,7 +20,7 @@ class EventController extends Controller
     {
         $events = $this->readEvents();
 
-        // Fetch and update
+        // Fetch and update weather if missing or empty coordinates
         $updated = false;
         foreach ($events as &$event) {
             if (empty($event['weather']) || empty($event['weather']['coord'])) {
@@ -63,6 +63,19 @@ class EventController extends Controller
         return response()->json($newEvent, 201);
     }
 
+    public function show($id)
+    {
+        $events = $this->readEvents();
+
+        foreach ($events as $event) {
+            if ($event['id'] == $id) {
+                return response()->json($event);
+            }
+        }
+
+        return response()->json(['message' => 'Event not found'], 404);
+    }
+
     // Update an existing event
     public function update(Request $request, $id)
     {
@@ -81,13 +94,31 @@ class EventController extends Controller
         $events = $this->readEvents();
 
         $found = false;
-        foreach ($events as &$event) {
+        foreach ($events as &$event) { // Use & for reference to modify the original array
             if ($event['id'] == $id) {
+                $originalLocation = $event['location']; // Store original location for comparison
+
+                // Merge incoming data with existing event data.
+                // This ensures fields not sent from the frontend (like original weather) are retained.
                 $event = array_merge($event, $request->all());
-                $event['id'] = $id;
-                $event['weather'] = $this->getWeatherForLocation($event['location']);
+
+                // Condition to re-fetch weather:
+                // 1. If the 'location' field has changed.
+                // 2. Or, if the event currently has no weather data or invalid coordinates.
+                if ($event['location'] !== $originalLocation || empty($event['weather']) || empty($event['weather']['coord'])) {
+                    $newWeather = $this->getWeatherForLocation($event['location']);
+                    // Only update weather if a successful response was received
+                    if ($newWeather !== null) {
+                        $event['weather'] = $newWeather;
+                    }
+                    // Else (if $newWeather is null), the $event['weather'] will remain
+                    // whatever it was after the array_merge, effectively preserving it
+                    // if the re-fetch failed but the frontend had sent it.
+                }
+
+                $event['id'] = $id; // Ensure ID remains consistent after the merge
                 $found = true;
-                break;
+                break; // Stop iterating once the event is found and updated
             }
         }
 
@@ -97,6 +128,7 @@ class EventController extends Controller
 
         $this->writeEvents($events);
 
+        // Return the updated event data
         return response()->json($event, 200);
     }
 

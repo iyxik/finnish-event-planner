@@ -54,6 +54,7 @@ function App() {
                     <Route path="/events" element={<EventListPage />} />
                     <Route path="/events/new" element={<FormPage />} />
                     <Route path="/events/:id" element={<SingleEvent />} />
+                    <Route path="/events/:id/edit" element={<FormPage />} />
                     <Route
                         path="/register"
                         element={
