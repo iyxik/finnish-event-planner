@@ -106,6 +106,7 @@ const FormPage = ({ user }) => {
                 eventData={eventData}
                 handleInputChange={handleInputChange}
                 handleSubmit={handleSubmit}
+                isEditing={isEditing}
             />
         </div>
     );

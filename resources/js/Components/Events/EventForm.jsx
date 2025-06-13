@@ -3,7 +3,8 @@ import { FiCalendar, FiMapPin, FiLink, FiPlus, FiTag } from "react-icons/fi";
 import { MdEvent } from "react-icons/md";
 import { BiCommentDetail } from "react-icons/bi";
 
-function EventForm({ eventData, handleInputChange, handleSubmit }) {
+function EventForm({ eventData, handleInputChange, handleSubmit, isEditing }) {
+    
     return (
         <div className="event-form-page">
             <p>Fill the form below to create a new event</p>
@@ -68,6 +69,23 @@ function EventForm({ eventData, handleInputChange, handleSubmit }) {
                     </label>
                 </div>
 
+                
+
+                {/* --- NEW: Full Address Field --- */}
+                <div className="form-group">
+                    <input
+                        type="text"
+                        name="address" // This is the new 'address' field
+                        placeholder=" "
+                        value={eventData.address || ""} // Ensure it's never undefined
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <label>
+                        <FiMapPin style={{ marginRight: "8px" }} />
+                        Address
+                    </label>
+                </div>
                 {/* --- City for Weather Data --- */}
                 <div className="form-group">
                     <input
@@ -80,22 +98,7 @@ function EventForm({ eventData, handleInputChange, handleSubmit }) {
                     />
                     <label>
                         <FiMapPin style={{ marginRight: "8px" }} />
-                        City (for Weather Data)
-                    </label>
-                </div>
-
-                {/* --- NEW: Full Address Field --- */}
-                <div className="form-group">
-                    <input
-                        type="text"
-                        name="address" // This is the new 'address' field
-                        placeholder=" "
-                        value={eventData.address || ""} // Ensure it's never undefined
-                        onChange={handleInputChange}
-                    />
-                    <label>
-                        <FiMapPin style={{ marginRight: "8px" }} />
-                        Full Address (Optional)
+                        City
                     </label>
                 </div>
 
@@ -169,9 +172,10 @@ function EventForm({ eventData, handleInputChange, handleSubmit }) {
                 </div>
 
                 <button type="submit">
-                    <FiPlus />
-                    Save Event
-                </button>
+    <FiPlus />
+    {isEditing ? "Update Event" : "Add Event"}
+</button>
+
             </form>
         </div>
     );

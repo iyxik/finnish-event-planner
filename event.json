@@ -51,12 +51,12 @@
         }
     },
     {
-        "title": "Pori Jazz Festival",
+        "title": "Pori Jazz Festivalfff",
         "date": "2025-06-17",
-        "location": "Pori",
+        "location": "jnakndk",
         "description": "Legendary names in jazz, soul, and pop gather in the charming coastal town of Pori. Enjoy big-name acts in a laid-back outdoor setting, surrounded by cafes and the scent of summer air.",
         "image_url": null,
-        "id": 4,
+        "id": "4",
         "weather": {
             "temp": 17.04,
             "description": "clear sky",
@@ -65,7 +65,10 @@
                 "lat": 61.4833,
                 "lon": 21.7833
             }
-        }
+        },
+        "time": "04:43",
+        "address": "dwdwqwq",
+        "category": "Lifestyle & Hobby"
     },
     {
         "title": "Flow Festival",
@@ -194,8 +197,8 @@
         "category": "Educational",
         "description": "Good times, we are presenting our amazing Event Planner App, \nsuch fun to make this happen, can't wait to go for holiday",
         "image_url": "https:\/\/encrypted-tbn0.gstatic.com\/images?q=tbn:ANd9GcRY_Vq02DaBetr2tbgOUBcDS4Wx7DKQjpFhDw&s",
-        "address": "rautatiel\u00e4isenkatu 5",
-        "id": 14,
+        "address": "Rautatiel\u00e4isenkatu 5",
+        "id": "14",
         "weather": {
             "temp": 16.17,
             "description": "light rain",
@@ -203,6 +206,89 @@
             "coord": {
                 "lat": 60.1695,
                 "lon": 24.9355
+            }
+        }
+    },
+    {
+        "title": "7832887",
+        "date": "2025-06-18",
+        "time": "23:24",
+        "location": "sdsfsdwsf",
+        "category": "Community & Charity",
+        "description": "jndsnkjdasds",
+        "image_url": null,
+        "address": "dsda",
+        "id": 15,
+        "weather": null
+    },
+    {
+        "title": "kjndkqbdkj",
+        "date": "2025-06-20",
+        "time": "03:43",
+        "location": "jndsknkd",
+        "category": "Community & Charity",
+        "description": "dsakasdnbknasd",
+        "image_url": null,
+        "address": "safjkbnas",
+        "id": 16,
+        "weather": null
+    },
+    {
+        "title": "kjnefknsdkDDD",
+        "date": "2025-06-14",
+        "time": "01:01",
+        "location": "nurmes",
+        "category": "Political & Civic",
+        "description": "bdksbkdjfs",
+        "image_url": null,
+        "id": "17",
+        "weather": {
+            "temp": 9.29,
+            "description": "broken clouds",
+            "icon": "04d",
+            "coord": {
+                "lat": 63.5421,
+                "lon": 29.1397
+            }
+        },
+        "address": "jnkjnkjkj"
+    },
+    {
+        "title": "mnbmasfkj",
+        "date": "2025-06-20",
+        "time": "04:05",
+        "location": "joensuu",
+        "category": "Tech",
+        "description": "dsajbkasd",
+        "image_url": null,
+        "id": 18,
+        "weather": {
+            "temp": 13.27,
+            "description": "clear sky",
+            "icon": "01d",
+            "coord": {
+                "lat": 62.6012,
+                "lon": 29.7632
+            }
+        }
+    },
+    {
+        "title": "jbqekbkejw",
+        "date": "2025-06-14",
+        "time": "03:03",
+        "location": "espoo",
+        "category": "Educational",
+        "description": "qdwjnknqkj",
+        "image_url": null,
+        "address": "jnbsakjk",
+        "id": 19,
+        "weather": {
+            "temp": 11.3,
+            "description": "clear sky",
+            "icon": "01d",
+            "coord": {
+                "lat": 60.25,
+                "lon": 24.6667
             }
         }
     }
