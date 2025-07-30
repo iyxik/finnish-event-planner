@@ -62,3 +62,27 @@
         width: 100%;
     }
 }
+
+html.dark .filter-title {
+    color: var(--text-color);
+}
+
+html.dark .filter-bar {
+    color: var(--text-color);
+}
+
+html.dark .filter-label {
+    color: var(--text-color);
+}
+
+html.dark .filter-input,
+html.dark .filter-select,
+html.dark .filter-date {
+    background-color: #2a2a2a;
+    color: #f5f5f5;
+    border-color: #555;
+}
+
+html.dark .filter-input::placeholder {
+    color: #aaa;
+}
