@@ -23,8 +23,8 @@ RUN composer install --no-dev --optimize-autoloader
 # Install JS dependencies and build React frontend
 RUN npm install && npm run build
 
-# Expose port 9000 (default PHP-FPM port)
-EXPOSE 9000
+# Expose port 8080 for HTTP access
+EXPOSE 8080
 
-# Start PHP-FPM server
-CMD ["php-fpm"]
+# Start Laravel development server
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
