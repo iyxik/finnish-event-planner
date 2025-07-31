@@ -20,11 +20,17 @@ COPY . .
 # Install PHP dependencies (without dev packages)
 RUN composer install --no-dev --optimize-autoloader
 
+# Set file permissions (critical for Laravel)
+RUN chmod -R 775 storage bootstrap/cache
+
+# Generate Laravel key (fallback if not set via env)
+RUN if [ -z "$APP_KEY" ]; then php artisan key:generate; fi
+
 # Install JS dependencies and build React frontend
 RUN npm install && npm run build
 
-# Expose port 8080 for HTTP access
-EXPOSE 8080
+# Expose port 10000 (Render's default)
+EXPOSE 10000
 
-# Start Laravel development server
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
+# Start Laravel server + keep logs streaming
+CMD sh -c "php artisan serve --host=0.0.0.0 --port=10000 & tail -f storage/logs/laravel.log"
