@@ -1,36 +1,35 @@
-# Use official PHP 8.3 FPM image as base
 FROM php:8.3-fpm
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git unzip curl libzip-dev zip libonig-dev libpng-dev nodejs npm
 
-# Install PHP extensions required by Laravel
+# Install PHP extensions
 RUN docker-php-ext-install pdo_mysql zip mbstring gd
 
-# Install Composer globally
+# Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Set working directory
 WORKDIR /var/www/html
-
-# Copy all project files
 COPY . .
 
-# Install PHP dependencies (without dev packages)
-RUN composer install --no-dev --optimize-autoloader
+# Set permissions and create log file
+RUN mkdir -p storage/logs && \
+    touch storage/logs/laravel.log && \
+    chmod -R 775 storage bootstrap/cache
 
-# Set file permissions (critical for Laravel)
-RUN chmod -R 775 storage bootstrap/cache
+# Install dependencies
+RUN composer install --no-dev --optimize-autoloader && \
+    npm install && npm run build
 
-# Generate Laravel key (fallback if not set via env)
+# Generate key if missing
 RUN if [ -z "$APP_KEY" ]; then php artisan key:generate; fi
 
-# Install JS dependencies and build React frontend
-RUN npm install && npm run build
-
-# Expose port 10000 (Render's default)
 EXPOSE 10000
 
-# Start Laravel server + keep logs streaming
-CMD sh -c "php artisan serve --host=0.0.0.0 --port=10000 & tail -f storage/logs/laravel.log"
+# Start command with proper error handling
+CMD sh -c "php artisan config:clear && \
+           php artisan cache:clear && \
+           php artisan view:clear && \
+           php artisan serve --host=0.0.0.0 --port=10000 > storage/logs/laravel.log 2>&1 & \
+           tail -f storage/logs/laravel.log"
