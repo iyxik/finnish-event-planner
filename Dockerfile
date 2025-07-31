@@ -1,4 +1,3 @@
-# Use official PHP 8.3 FPM image
 FROM php:8.3-fpm
 
 # Install system dependencies
@@ -18,36 +17,36 @@ RUN mkdir -p /etc/ssl/certs/ && \
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Set working directory
 WORKDIR /var/www/html
-
-# Copy application files
 COPY . .
 
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
+# Create Laravel directory structure
+RUN mkdir -p storage/framework/{sessions,views,cache} && \
+    mkdir -p storage/logs && \
+    touch storage/logs/laravel.log && \
+    chmod -R 777 storage bootstrap/cache
 
-# Set file permissions
-RUN chmod -R 775 storage bootstrap/cache && \
-    mkdir -p storage/framework/{sessions,views,cache}
+# Install dependencies
+RUN composer install --no-dev --optimize-autoloader && \
+    npm install && npm run build
 
-# Generate Laravel key if missing
+# Generate key if missing (fallback)
 RUN if [ -z "$APP_KEY" ]; then php artisan key:generate; fi
 
-# Install Node dependencies and build React
-RUN npm install && npm run build
-
 # Cache configuration
-RUN php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan view:cache
+RUN php artisan config:clear && \
+    php artisan cache:clear && \
+    php artisan view:clear
 
-# Expose Render's default port
 EXPOSE 10000
 
-# Startup command
-CMD sh -c "mkdir -p storage/logs && \
-           touch storage/logs/laravel.log && \
-           php artisan migrate --force && \
-           php artisan serve --host=0.0.0.0 --port=10000 > storage/logs/laravel.log 2>&1 & \
+# Startup command with error handling
+CMD sh -c "php artisan config:clear && \
+           php artisan cache:clear && \
+           php artisan view:clear && \
+           (php artisan serve --host=0.0.0.0 --port=10000 || echo 'Server failed to start') > storage/logs/laravel.log 2>&1 & \
+           sleep 2 && \
+           if [ ! -f storage/logs/laravel.log ]; then \
+             echo 'Creating fallback log' > storage/logs/laravel.log; \
+           fi && \
            tail -f storage/logs/laravel.log"
